@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Diligent in Law – Advocate Thangarajus</title>
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#0B0F17">
+  <link rel="icon" type="image/svg+xml" href="icons/icon.svg">
+  <link rel="apple-touch-icon" href="icons/icon.svg">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Tamil&family=Noto+Sans+Devanagari&family=Noto+Sans+Telugu&family=Noto+Sans+Kannada&family=Noto+Sans+Malayalam&family=Noto+Sans+Bengali&family=Noto+Sans+Gujarati&family=Noto+Sans+Gurmukhi&family=Noto+Sans+Oriya&family=Noto+Naskh+Arabic&display=swap">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/print-legal.css">
+</head>
+<body>
+  <header>
+    <div id="clk" aria-label="Clock"></div>
+    <h1>Diligent in Law – Advocate Thangarajus</h1>
+    <p>Drafting, filing set-up and printing for court pleadings, written arguments, vakalat and legal opinions</p>
+    <div class="header-actions">
+      <button id="btn_hub_bns">⚖️ BNS / BNSS Codes</button>
+      <button id="btn_hub_calc">📅 NI 138 & Court Fees</button>
+      <button id="btn_hub_diary">📋 Case Diary & Cause List</button>
+      <button id="btn_hub_index">📑 e-Filing Index</button>
+      <button id="btn_hub_ledger">💼 Chamber Fee Ledger</button>
+    </div>
+  </header>
+
+  <div id="prbar" class="noprint"></div>
+
+  <div id="pvbar" class="noprint">
+    <b>Print preview</b> – edit the draft on the page below, and edit the header, footer, font and margins here. Every change is saved to the main sheet options.
+    <div class="g">
+      <div><label>Header</label><select id="p_hshow"><option value="1">Show</option><option value="0">Remove</option></select></div>
+      <div><label>Header left</label><input id="p_hl"></div>
+      <div><label>Header centre</label><input id="p_hc"></div>
+      <div><label>Header right</label><input id="p_hr"></div>
+      <div><label>Header on first page</label><select id="p_hfirst"><option value="1">Yes</option><option value="0">No</option></select></div>
+    </div>
+    <div class="g">
+      <div><label>Footer</label><select id="p_fshow"><option value="1">Show</option><option value="0">Remove</option></select></div>
+      <div><label>Footer left</label><input id="p_fl"></div>
+      <div><label>Footer centre</label><input id="p_fc"></div>
+      <div><label>Footer right</label><input id="p_fr"></div>
+      <div><label>Header/footer size (pt)</label><input id="p_hfs" type="number" min="6" max="16"></div>
+    </div>
+    <div class="g">
+      <div><label>Font size (pt)</label><input id="p_fsize" type="number" min="8" max="24"></div>
+      <div><label>Line spacing</label><input id="p_lh" type="number" step="0.1" min="1" max="3"></div>
+      <div><label>Top mm</label><input id="p_mt" type="number"></div>
+      <div><label>Bottom mm</label><input id="p_mb" type="number"></div>
+      <div><label>Left mm</label><input id="p_ml" type="number"></div>
+      <div><label>Right mm</label><input id="p_mr" type="number"></div>
+    </div>
+    <div class="g b">
+      <div><label style="display:flex;gap:4px;align-items:center"><input type="checkbox" id="p_proof" style="width:auto"> Draft watermark</label></div>
+      <div><button class="p" id="pvprint">Print now</button></div>
+      <div><button id="pvreset">Reset header and footer</button></div>
+      <div><button id="pvclose">Close preview</button></div>
+    </div>
+    <div class="note">Words you can type: {page} {pages} {date} {case} {client}. Header and footer print in Chrome and Edge. In the print window, switch off the browser’s own “Headers and footers” so they do not repeat.</div>
+  </div>
+
+  <main>
+    <div class="ui">
+      <section>
+        <h2>1. Court and filing</h2>
+        <label>State of filing (choose first)</label><select id="state"><option value="">Select State</option></select>
+        <div id="strules" class="note" style="margin:6px 0"></div>
+        <label>Place (city / town)</label><input id="place" placeholder="Chennai">
+        <label>Court</label><select id="court"></select>
+        <input id="ocourt" placeholder="Other court or tribunal name, if not in the list (optional)" style="margin-top:6px">
+        <button id="sugb" style="margin-top:6px">Suggest court from the facts</button><div id="sug" class="note"></div>
+        <label>Type of filing</label><select id="ftype"></select>
+        <div class="row"><div><label>Case number</label><input id="cno" placeholder="Leave blank until the court gives the number"></div></div>
+        <label>Petitioner / plaintiff (with address)</label><textarea id="p1" style="min-height:50px"></textarea>
+        <label>Respondent / defendant (with address)</label><textarea id="p2" style="min-height:50px"></textarea>
+        <label>Your client</label><input id="client" placeholder="e.g. 4th Respondent">
+      </section>
+
+      <section>
+        <h2>2. Jurisdiction, valuation, court fee</h2>
+        <div class="row">
+          <div><label>Suit / claim value (Rs.)</label><input id="val"></div>
+          <div><label>Court fee / stamp duty paid (Rs.)</label><input id="fee"></div>
+        </div>
+        <div class="row">
+          <div><label>Junior court limit, your State (Rs.)</label><input id="lim1"></div>
+          <div><label>Sub-Court limit, your State (Rs.)</label><input id="lim2"></div>
+        </div>
+        <label>Jurisdiction basis (territorial, pecuniary, subject-matter)</label><textarea id="jur" style="min-height:60px"></textarea>
+        <p class="note">Court fee, stamp duty and pecuniary limits differ by state and change by amendment. Enter the figures after checking the current State schedule.</p>
+      </section>
+
+      <section>
+        <h2>3. Facts and circumstances</h2>
+        <label>Brief of the facts (one paragraph per line)</label><textarea id="facts" style="min-height:160px"></textarea>
+        <label>Grounds / arguments (one per line)</label><textarea id="grounds" style="min-height:100px"></textarea>
+        <label>Prayer (one per line)</label><textarea id="prayer" style="min-height:70px"></textarea>
+      </section>
+
+      <section>
+        <h2>4. Documents in order of priority</h2>
+        <div id="docs"></div><button id="adddoc">Add document</button>
+        <p class="note">Put the strongest proof first. Use the arrows to reorder. Annexure numbers follow this order.</p>
+      </section>
+
+      <section>
+        <h2>5. Case laws table</h2>
+        <div id="laws"></div><button id="addlaw">Add case law</button>
+        <h2 style="margin-top:14px">Sections and Acts relied on</h2><div id="secs"></div><button id="addsec">Add section</button>
+        <label>Find case laws and sections (opens Indian Kanoon in a new tab)</label>
+        <div class="row"><input id="q" placeholder="e.g. gift deed Section 23 senior citizens"><button id="sq">Search</button></div>
+        <label>Paste a list from Claude. Case laws: Case | Court, date | Holding | Para. Sections: Act | Section | Relevance. One per line.</label>
+        <textarea id="imp" style="min-height:60px"></textarea>
+        <div class="row"><button id="impl">Import as case laws</button><button id="imps">Import as sections</button></div>
+        <label><input type="checkbox" id="showlaws" checked style="width:auto"> Print case laws table in the filing</label>
+        <label><input type="checkbox" id="showsecs" checked style="width:auto"> Print sections table in the filing</label>
+        <p class="note">Check every citation and paragraph number against the certified judgment before filing.</p>
+      </section>
+
+      <section>
+        <h2>6. Advocates and docket</h2>
+        <div id="advs"></div><button id="addadv">Add advocate</button>
+        <label><input type="checkbox" id="caveat" checked style="width:auto"> Reserve right to file caveat petition (Section 148-A CPC)</label>
+        <label><input type="checkbox" id="sign" style="width:auto"> Add place, date and advocate name at the end of the draft</label>
+        <label><input type="checkbox" id="docket" style="width:auto"> Add advocate docket at the foot of the last page</label>
+      </section>
+
+      <section>
+        <h2>7. Language, font and page</h2>
+        <div class="row">
+          <div><label>Language</label><select id="lang"></select></div>
+          <div><label>Font</label><select id="font"></select></div>
+        </div>
+        <div class="row">
+          <div><label>Font size (pt)</label><input id="fsize" type="number" value="14" min="8" max="24"></div>
+          <div><label>Line spacing</label><input id="lh" type="number" step="0.1" value="1.8" min="1" max="3"></div>
+        </div>
+        <div class="row">
+          <div>
+            <label>Paper</label>
+            <select id="paper">
+              <option value="210x297">A4</option>
+              <option value="216x356">Legal (India)</option>
+              <option value="216x279">Letter</option>
+              <option value="148x210">A5</option>
+              <option value="297x420">A3</option>
+            </select>
+          </div>
+          <div>
+            <label>Orientation</label>
+            <select id="orient">
+              <option value="p">Portrait</option>
+              <option value="l">Landscape</option>
+            </select>
+          </div>
+        </div>
+        <div class="row">
+          <div>
+            <label>Default alignment</label>
+            <select id="palign">
+              <option value="left">Left</option>
+              <option value="justify">Justified</option>
+              <option value="center">Centre</option>
+              <option value="right">Right</option>
+            </select>
+          </div>
+          <div>
+            <label>Columns</label>
+            <select id="cols">
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+            </select>
+          </div>
+        </div>
+        <div class="row">
+          <div><label>Top mm</label><input id="mt" type="number" value="25"></div>
+          <div><label>Bottom mm</label><input id="mb" type="number" value="25"></div>
+          <div><label>Left mm</label><input id="ml" type="number" value="38"></div>
+          <div><label>Right mm</label><input id="mr" type="number" value="25"></div>
+        </div>
+        <p class="note">Check the font size, margin and paper rules of the court you are filing in.</p>
+      </section>
+
+      <section>
+        <h2>7A. Header and footer</h2>
+        <div class="row">
+          <div><label>Header</label><select id="hshow"><option value="1">Show</option><option value="0">Remove</option></select></div>
+          <div><label>Header on first page</label><select id="hfirst"><option value="1">Yes</option><option value="0">No</option></select></div>
+        </div>
+        <label>Header left</label><input id="hl" placeholder="e.g. {case}">
+        <label>Header centre</label><input id="hc" placeholder="e.g. IN THE HIGH COURT">
+        <label>Header right</label><input id="hr" placeholder="e.g. {client}">
+        <div class="row">
+          <div><label>Footer</label><select id="fshow"><option value="1">Show</option><option value="0">Remove</option></select></div>
+          <div><label>Header/footer size (pt)</label><input id="hfs" type="number" value="8" min="6" max="16"></div>
+        </div>
+        <label>Footer left</label><input id="fl" value="Diligent in Law – Advocate Thangarajus">
+        <label>Footer centre</label><input id="fc" value="Page {page} of {pages}">
+        <label>Footer right</label><input id="fr" value="Printed: {date}">
+        <div class="row" style="margin-top:8px">
+          <button id="hfreset">Reset to standard</button>
+          <button id="hfprev">Preview and edit</button>
+        </div>
+        <p class="note">Clear a box to leave that place empty, or choose Remove to drop the whole header or footer. Words you can type: {page} {pages} {date} {case} {client}. Every print opens a preview where the same options can be edited, and the changes are saved here.</p>
+      </section>
+
+      <section>
+        <h2>8. Review, proof print and legal aids</h2>
+        <div class="row">
+          <button id="chkb">Check before filing</button>
+          <button id="guide">Page guides</button>
+          <button id="proof">Proof print</button>
+        </div>
+        <div id="chk" class="note"></div>
+        <label>Standard legal sentences</label><select id="ph"></select>
+        <div class="row">
+          <button id="phf">Add to facts</button>
+          <button id="phg">Add to grounds</button>
+        </div>
+        <div class="row">
+          <button id="t1">Tidy facts</button>
+          <button id="t2">Tidy grounds</button>
+          <button id="t3">Tidy prayer</button>
+        </div>
+        <label>Legal dictionary and maxims</label><input id="dq" placeholder="Search a term or maxim">
+        <div id="dres" style="max-height:220px;overflow:auto"></div>
+        <label>Landmark judgments (verify before citing)</label>
+        <div id="lm" style="max-height:220px;overflow:auto"></div>
+        <label>Client instruction sheet</label>
+        <div class="row">
+          <select id="ctype">
+            <option>Individual</option>
+            <option>Private limited company</option>
+            <option>Public limited company</option>
+          </select>
+          <button id="cbtn">Show on page</button>
+        </div>
+      </section>
+
+      <section>
+        <h2>9. Agreements and deeds</h2>
+        <label>Agreement or deed</label><select id="atype"></select>
+        <label>Property class</label><select id="aprop"></select>
+        <label>Property location and Sub-Registrar office (where the property is situated)</label>
+        <input id="asr" placeholder="e.g. Sub-Registrar Office, Komarapalayam">
+        <label>First party (name, father/company, address, ID)</label>
+        <textarea id="ap1" style="min-height:55px"></textarea>
+        <label>Second party (name, father/company, address, ID)</label>
+        <textarea id="ap2" style="min-height:55px"></textarea>
+        <label>Subject (property, work, business, loan purpose)</label>
+        <textarea id="asub" style="min-height:50px"></textarea>
+        <div class="row">
+          <div><label>Amount / rent / price (Rs.)</label><input id="aamt"></div>
+          <div><label>Term / period</label><input id="aterm" placeholder="11 months"></div>
+        </div>
+        <div class="row">
+          <div><label>Advance rent (months)</label><select id="aadv"></select></div>
+          <div>
+            <label>Advance is</label>
+            <select id="aadj">
+              <option value="first">adjusted against the first months’ rent</option>
+              <option value="last">adjusted against the last months’ rent</option>
+              <option value="refund">refundable advance, not adjusted</option>
+            </select>
+          </div>
+        </div>
+        <div class="row">
+          <div><label>Security deposit (Rs.)</label><input id="adep"></div>
+          <div>
+            <label>Mode of payment</label>
+            <select id="apay">
+              <option>bank transfer</option>
+              <option>cheque</option>
+              <option>UPI</option>
+              <option>cash</option>
+            </select>
+          </div>
+        </div>
+        <label>Date of agreement</label><input id="adate" placeholder="Leave blank for today">
+        <label>Beneficiary of the property is</label>
+        <select id="aben">
+          <option>Second Party</option>
+          <option>First Party</option>
+        </select>
+        <label><input type="checkbox" id="aperm" checked style="width:auto"> Permission only: no ownership or adverse possession claim (use for rent, lease and licence)</label>
+        <div class="row">
+          <div><label>Aadhaar number</label><input id="aad" inputmode="numeric" autocomplete="off"></div>
+          <div><label>PAN</label><input id="pan" autocomplete="off"></div>
+        </div>
+        <label>Bank account holder name</label><input id="bk" autocomplete="off">
+        <div class="row">
+          <div><label>Account number</label><input id="ban" inputmode="numeric" autocomplete="off"></div>
+          <div><label>IFSC</label><input id="ifsc" autocomplete="off"></div>
+        </div>
+        <label>Apartment association or society name</label><input id="aasn">
+        <label>Other members who must sign (one per line: name, relation)</label>
+        <textarea id="amem" style="min-height:50px"></textarea>
+        <label><input type="checkbox" id="amask" checked style="width:auto"> Mask Aadhaar and account numbers in the printed copy</label>
+        <p class="note">Identity and bank details are not saved in the browser. Re-enter them each time.</p>
+        <button class="p" id="agr2" style="margin-top:8px">Generate agreement</button>
+        <button id="aff" style="margin-top:8px">Beneficiary affidavit</button>
+        <p class="note">The heading shows in Tamil or Hindi when you choose that language in section 7. Other languages show the English heading. Ask me in chat for the full text in any Indian language.</p>
+      </section>
+
+      <section>
+        <h2>10. Storage, Security & Multi-Device Sync</h2>
+        <label>Passcode lock</label>
+        <input id="spw" type="password" placeholder="Passcode (6 or more characters)">
+        <div class="row">
+          <button id="spset">Set passcode</button>
+          <button id="splock">Lock now</button>
+          <button id="spoff">Remove passcode</button>
+        </div>
+        <label>Auto-lock after (minutes, 0 = off)</label><input id="sidle" type="number" value="10" min="0">
+        
+        <h2 style="margin-top:14px">IndexedDB Drafts & Encrypted Backup</h2>
+        <div class="row">
+          <button id="db_save" class="p">Save Draft to Database</button>
+          <button id="db_load">Load Saved Draft</button>
+        </div>
+        <div class="row" style="margin-top:6px">
+          <button id="btn_export_diligent">Export Encrypted Backup (.diligent)</button>
+          <button id="btn_import_trigger">Import Encrypted Backup</button>
+          <input type="file" id="inp_import_diligent" accept=".diligent,.json" style="display:none">
+        </div>
+
+        <h2 style="margin-top:14px">Multi-Device Office LAN Sync</h2>
+        <div class="row">
+          <input id="sync_url" placeholder="http://192.168.1.5:8080" value="http://localhost:8080">
+          <button id="btn_lan_sync">Sync with Office Server</button>
+        </div>
+        <div id="sync_msg" class="note" style="margin-top:4px"></div>
+
+        <div id="slog" class="note" style="margin-top:10px"></div>
+        <button id="sclear" style="margin-top:6px">Clear all saved data</button>
+        <p class="note">Encrypted backups use AES-GCM 256-bit encryption with PBKDF2 key derivation. Your drafts and records remain 100% private and can only be decrypted with your office passcode.</p>
+      </section>
+
+      <section>
+        <h2>11. Receipts</h2>
+        <label>Received from (name)</label><input id="rn" autocomplete="off">
+        <div class="row">
+          <div><label>Mobile number</label><input id="rm" inputmode="tel" placeholder="9876543210" autocomplete="off"></div>
+          <div><label>Amount (Rs.)</label><input id="ra" inputmode="numeric"></div>
+        </div>
+        <div class="row">
+          <div>
+            <label>Towards</label>
+            <select id="rp">
+              <option>monthly rent</option>
+              <option>advance rent</option>
+              <option>security deposit</option>
+              <option>maintenance charges</option>
+              <option>other payment</option>
+            </select>
+          </div>
+          <div><label>Period / month</label><input id="rper" placeholder="November 2026"></div>
+        </div>
+        <div class="row">
+          <div>
+            <label>Mode</label>
+            <select id="rmo">
+              <option>bank transfer</option>
+              <option>cheque</option>
+              <option>UPI</option>
+              <option>cash</option>
+            </select>
+          </div>
+          <div><label>Reference (UTR / cheque no.)</label><input id="rref"></div>
+        </div>
+        <label>Property</label><input id="rprop" placeholder="Leave blank to use the subject in section 9">
+        <label>Received by</label><input id="rby" placeholder="Owner or advocate name">
+        <div class="row">
+          <div><label>Advocate UPI ID (VPA)</label><input id="rupi" value="thangaraju@oksbi" autocomplete="off"></div>
+          <div><label style="margin-top:24px"><input type="checkbox" id="rqr" checked style="width:auto"> Embed Dynamic UPI QR Code</label></div>
+        </div>
+        <div class="row">
+          <button class="p" id="rgen">Generate receipt</button>
+          <button id="rwa">Send by WhatsApp</button>
+          <button id="rsms">Send by SMS</button>
+          <button id="rcp">Copy text</button>
+        </div>
+        <label>My own WhatsApp number (for my copy)</label><input id="rmy" inputmode="tel" value="8903440031" autocomplete="off">
+        <div class="row">
+          <button id="rpdf">Download PDF</button>
+          <button id="rshare">Share PDF via WhatsApp / System</button>
+          <button id="rmine">WhatsApp my copy</button>
+        </div>
+        <div id="rlog" class="note" style="margin-top:6px"></div>
+        <p class="note">Sending opens WhatsApp or your SMS app with the receipt typed in, and you press send yourself. This page cannot send messages by itself. The mobile number is not saved.</p>
+      </section>
+
+      <section>
+        <button class="p" id="gen">Generate draft</button>
+        <button id="print">Print</button>
+        <button id="vak">Vakalat</button>
+        <button id="agr">Agreement</button>
+        <button id="adv">Legal opinion</button>
+        <button id="theme">Light / dark</button>
+        <p class="note">Edit the draft directly on the page at the right. Generating again replaces your edits. Data stays in this browser only.</p>
+      </section>
+    </div>
+
+    <div class="rt">
+      <div id="wbar" class="noprint"></div>
+      <div class="scroll" id="scr">
+        <div id="pvh" class="pvh noprint"></div>
+        <div id="sheet" contenteditable="true" spellcheck="false"></div>
+        <div id="pvf" class="pvf noprint"></div>
+      </div>
+    </div>
+  </main>
+
+  <div id="psel"></div>
+  <div id="lk">
+    <h2>Diligent in Law – locked</h2>
+    <input id="lkp" type="password" placeholder="Passcode" style="max-width:260px">
+    <button class="p" id="lku">Unlock</button>
+    <div id="lkm" class="note"></div>
+  </div>
+
+  <div id="chamber_modal">
+    <div class="hub-content">
+      <div class="hub-header">
+        <h2 id="hub_title">⚖️ Chamber Legal Hub & Tools</h2>
+        <button id="hub_close">✕ Close</button>
+      </div>
+      <div class="hub-tabs">
+        <div class="hub-tab active" data-tab="bns">New Criminal Codes</div>
+        <div class="hub-tab" data-tab="calc">Statutory Calculators</div>
+        <div class="hub-tab" data-tab="diary">Case Diary & Cause List</div>
+        <div class="hub-tab" data-tab="index">e-Filing Index</div>
+        <div class="hub-tab" data-tab="ledger">Chamber Fee Ledger</div>
+      </div>
+      <div class="hub-body">
+        <!-- Tab 1: Criminal Laws -->
+        <div id="pane_bns" class="hub-tab-pane active">
+          <label>Search Section or Offence (e.g. 420, 302, 438, murder, cheating, electronic evidence)</label>
+          <div class="row">
+            <input id="bns_query" placeholder="Type IPC section, CrPC section, or offence name">
+            <select id="bns_priority" style="max-width:200px">
+              <option value="new">BNS/BNSS Priority</option>
+              <option value="old">IPC/CrPC Priority</option>
+            </select>
+          </div>
+          <div id="bns_results" style="margin-top:12px;max-height:380px;overflow-y:auto;"></div>
+        </div>
+
+        <!-- Tab 2: Calculators -->
+        <div id="pane_calc" class="hub-tab-pane">
+          <div class="calc-card">
+            <h3>NI Act Section 138 Cheque Dishonour Calculator</h3>
+            <div class="row">
+              <div><label>Cheque Return Memo Date</label><input type="date" id="ni_memo"></div>
+              <div><label>Demand Notice Dispatch Date</label><input type="date" id="ni_dispatch"></div>
+              <div><label>Notice Service / Delivery Date</label><input type="date" id="ni_receipt"></div>
+            </div>
+            <button id="ni_calc_btn" class="p" style="margin-top:8px">Calculate Statutory Timeline</button>
+            <div id="ni_result" class="calc-result" style="display:none"></div>
+          </div>
+
+          <div class="calc-card">
+            <h3>Tamil Nadu Court Fees (TNCF Act 1955) Calculator</h3>
+            <div class="row">
+              <div>
+                <label>Type of Suit</label>
+                <select id="cf_type">
+                  <option value="money">Money Recovery Suit (Sec. 22)</option>
+                  <option value="partition_joint">Partition - Joint Possession (Sec. 37(2))</option>
+                  <option value="partition_separate">Partition - Excluded from Possession (Sec. 37(1))</option>
+                  <option value="declaration">Declaration & Possession (Sec. 25)</option>
+                  <option value="injunction">Injunction Suit (Sec. 27)</option>
+                </select>
+              </div>
+              <div><label>Suit Valuation (Rs.)</label><input type="number" id="cf_val" placeholder="e.g. 500000"></div>
+            </div>
+            <div class="row" style="margin-top:8px">
+              <button id="cf_calc_btn" class="p">Calculate Court Fee</button>
+              <button id="cf_inject_btn">Insert into Pleading Valuation</button>
+            </div>
+            <div id="cf_result" class="calc-result" style="display:none"></div>
+          </div>
+        </div>
+
+        <!-- Tab 3: Case Diary & Cause List -->
+        <div id="pane_diary" class="hub-tab-pane">
+          <div class="calc-card">
+            <h3>Add / Schedule Hearing</h3>
+            <div class="row">
+              <div><label>16-Digit CNR Number (Optional)</label><input id="cd_cnr" placeholder="e.g. TNCO010012342026"></div>
+              <div><label>Case Number</label><input id="cd_cno" placeholder="OS 104/2026 or WP 120/2026"></div>
+            </div>
+            <div class="row">
+              <div><label>Court Name & Complex</label><input id="cd_court" placeholder="Principal District Court, Madurai"></div>
+              <div><label>Court Hall No.</label><input id="cd_hall" placeholder="Hall 2"></div>
+            </div>
+            <div class="row">
+              <div><label>Parties</label><input id="cd_parties" placeholder="Raman vs Kumar"></div>
+              <div><label>Client</label><input id="cd_client" placeholder="Raman (Plaintiff)"></div>
+            </div>
+            <div class="row">
+              <div><label>Hearing Date</label><input type="date" id="cd_date"></div>
+              <div><label>Hearing Stage</label><select id="cd_stage"></select></div>
+            </div>
+            <label>Notes / Documents to Bring</label>
+            <input id="cd_notes" placeholder="Cross examination of PW-1; bring original sale deed">
+            <button id="cd_add_btn" class="p" style="margin-top:8px">Save Case to Diary</button>
+          </div>
+
+          <div class="row" style="align-items:flex-end;">
+            <div><label>View Daily Cause List for Date</label><input type="date" id="cd_filter_date"></div>
+            <button id="cd_view_cause_btn" class="p">Generate Printable Cause List</button>
+          </div>
+          <div id="cd_hearings_list" style="margin-top:12px;max-height:280px;overflow-y:auto"></div>
+        </div>
+
+        <!-- Tab 4: e-Filing Index -->
+        <div id="pane_index" class="hub-tab-pane">
+          <h3>High Court / District Court e-Filing v3.0 Index Builder</h3>
+          <p class="note">Enter each document component and page count. Running cumulative start and end pages are automatically calculated.</p>
+          <div id="idx_rows"></div>
+          <div class="row" style="margin-top:8px">
+            <button id="idx_add_btn">Add Document Row</button>
+            <button id="idx_gen_btn" class="p">Generate Index Table</button>
+            <button id="idx_inject_btn">Insert into Draft Sheet</button>
+          </div>
+          <div id="idx_preview" style="margin-top:12px;background:#fff;color:#000;padding:8px;border-radius:4px;display:none;"></div>
+        </div>
+
+        <!-- Tab 5: Chamber Ledger -->
+        <div id="pane_ledger" class="hub-tab-pane">
+          <div class="calc-card">
+            <h3>Add / Update Case Fee Ledger</h3>
+            <div class="row">
+              <div><label>Client Name</label><input id="cl_name" placeholder="Client Name"></div>
+              <div><label>Case Title / No.</label><input id="cl_case" placeholder="WP 1042/2026 or Sale Agreement"></div>
+            </div>
+            <div class="row">
+              <div><label>Total Agreed Fee (Rs.)</label><input type="number" id="cl_fee" placeholder="50000"></div>
+              <div><label>Advance Received (Rs.)</label><input type="number" id="cl_adv" placeholder="20000"></div>
+              <div><label>Court / Filing Expenses (Rs.)</label><input type="number" id="cl_exp" placeholder="5000"></div>
+            </div>
+            <div id="cl_calc_box" class="calc-result" style="margin:8px 0;font-weight:600;"></div>
+            <button id="cl_save_btn" class="p">Save to Fee Ledger</button>
+          </div>
+
+          <div id="cl_ledger_list" style="margin-top:12px;max-height:300px;overflow-y:auto"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>

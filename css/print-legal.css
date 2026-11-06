@@ -1,0 +1,54 @@
+@media print {
+  body {
+    background: #fff !important;
+    color: #000 !important;
+    padding: 0 !important;
+  }
+  header, .ui, .noprint, #pvbar, .pvh, .pvf, #prbar, #wbar {
+    display: none !important;
+  }
+  main {
+    display: block !important;
+    padding: 0 !important;
+  }
+  .scroll {
+    overflow: visible !important;
+    zoom: 1 !important;
+  }
+  #sheet {
+    box-shadow: none !important;
+    margin: 0 !important;
+    width: auto !important;
+    min-height: 0 !important;
+    padding: 0 !important;
+    background-image: none !important;
+  }
+  #sheet .pb {
+    border: 0 !important;
+    height: 0 !important;
+    margin: 0 !important;
+  }
+  #sheet .pb::after {
+    content: none !important;
+  }
+  body.psel main, body.psel #scr {
+    display: none !important;
+  }
+  body.psel #psel {
+    display: block !important;
+  }
+  body.proof #sheet::before, body.proof #psel::before {
+    content: "DRAFT – FOR CORRECTION";
+    position: fixed;
+    top: 38%;
+    left: 8%;
+    font-size: 56pt;
+    font-weight: 700;
+    color: rgba(200, 0, 0, 0.14);
+    transform: rotate(-30deg);
+    white-space: nowrap;
+    z-index: 9999;
+    pointer-events: none;
+  }
+}
+

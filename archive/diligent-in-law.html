@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Diligent in Law – Advocate Thangarajus</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Tamil&family=Noto+Sans+Devanagari&family=Noto+Sans+Telugu&family=Noto+Sans+Kannada&family=Noto+Sans+Malayalam&family=Noto+Sans+Bengali&family=Noto+Sans+Gujarati&family=Noto+Sans+Gurmukhi&family=Noto+Sans+Oriya&family=Noto+Naskh+Arabic&display=swap">
+<style>
+:root{--bg:#eef1f5;--panel:#fff;--ink:#14213d;--mute:#5b6678;--line:#c9d1dc;--acc:#1d5c7a;--accfg:#fff}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#10151f;--panel:#1a2230;--ink:#e6ebf3;--mute:#9aa6b8;--line:#33405a;--acc:#5fb0d6;--accfg:#08111c}}
+:root[data-theme="dark"]{--bg:#10151f;--panel:#1a2230;--ink:#e6ebf3;--mute:#9aa6b8;--line:#33405a;--acc:#5fb0d6;--accfg:#08111c}
+*{box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 "Noto Sans Tamil","Noto Sans Devanagari",system-ui,sans-serif;padding:env(safe-area-inset-top,0px) 0 env(safe-area-inset-bottom,0px)}
+header{padding:18px 20px;border-bottom:1px solid var(--line);background:var(--panel)}
+header h1{margin:0;font:600 22px Georgia,serif}header p{margin:2px 0 0;color:var(--mute);font-size:13px}
+main{display:grid;grid-template-columns:minmax(320px,430px) 1fr;gap:16px;padding:16px;align-items:start}
+@media(max-width:900px){main{grid-template-columns:1fr}}
+.ui section{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:12px 14px;margin-bottom:12px}
+h2{font:600 15px Georgia,serif;margin:0 0 8px}
+label{display:block;font-size:12px;color:var(--mute);margin:8px 0 2px}
+input,select,textarea{width:100%;font:inherit;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:4px;padding:6px 8px}
+textarea{min-height:90px;resize:vertical}
+.row{display:flex;gap:8px}.row>*{flex:1}
+button{font:inherit;cursor:pointer;border:1px solid var(--line);background:var(--panel);color:var(--ink);border-radius:4px;padding:5px 10px}
+button.p{background:var(--acc);color:var(--accfg);border-color:var(--acc)}
+button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid var(--acc);outline-offset:1px}
+.item{display:flex;gap:6px;margin-bottom:6px;align-items:center}.item input{flex:1}
+.item button{padding:3px 7px}
+.note{font-size:12px;color:var(--mute)}
+.scroll{overflow-x:auto}
+#pvbar,.pvh,.pvf{display:none}
+body.pv #pvbar{display:block;position:sticky;top:0;z-index:50;max-height:50vh;overflow:auto;background:var(--panel);border-bottom:2px solid var(--acc);padding:8px 12px;font-size:13px}
+body.pv header,body.pv .ui{display:none}
+body.pv main{display:block;padding:8px}
+#pvbar .g{display:flex;flex-wrap:wrap;gap:8px;align-items:flex-end;margin-top:4px}
+#pvbar .g>div{flex:1 1 130px}
+#pvbar .g.b>div{flex:0 0 auto}
+body.pv .pvh,body.pv .pvf{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;margin:0 auto;background:#fff;color:#555;font:8pt serif;border:1px dashed #9ab}
+body.pv .pvh{border-bottom:0}body.pv .pvf{border-top:0}
+.pvh span:nth-child(2),.pvf span:nth-child(2){text-align:center}.pvh span:nth-child(3),.pvf span:nth-child(3){text-align:right}
+.rt{min-width:0}
+#prbar{position:sticky;top:0;z-index:45;background:var(--panel);border-bottom:2px solid var(--acc);padding:6px 12px;font-size:13px}
+#prbar .grp{display:inline-flex;flex-wrap:wrap;gap:4px;align-items:center;padding:2px 6px;border-right:1px solid var(--line)}
+#prbar .grp:last-of-type{border-right:0}
+#prbar button{padding:3px 8px;font-size:13px}
+#prbar select,#prbar input{width:auto;max-width:170px;padding:3px 4px;font-size:13px}#prbar input[type=checkbox]{width:auto}
+#prbar .lb{font-size:11px;color:var(--mute)}#prbar .tot{font-weight:600;color:var(--acc)}
+body.pv #prbar{position:static;border:0;padding:0 0 6px;margin-bottom:6px;border-bottom:1px solid var(--line)}
+#psel{display:none;background:#fff;color:#000;overflow-wrap:anywhere}
+#psel table{border-collapse:collapse;width:100%;margin:8px 0}#psel th,#psel td{border:1px solid #000;padding:4px 6px;vertical-align:top;text-align:left}
+#psel h3{text-align:center;text-decoration:underline;margin:10px 0}#psel .c{text-align:center}#psel .r{text-align:right}#psel ul,#psel ol{margin:6px 0 6px 26px}
+@media print{body.psel main,body.psel #scr{display:none!important}body.psel #psel{display:block}body.proof #psel::before{content:"DRAFT – FOR CORRECTION";position:fixed;top:38%;left:8%;font-size:56pt;font-weight:700;color:rgba(200,0,0,.14);transform:rotate(-30deg);white-space:nowrap}}
+#wbar{position:sticky;top:var(--prh,0px);z-index:40;background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:4px;margin-bottom:8px;font-size:13px}
+#wbar .grp{display:inline-flex;flex-wrap:wrap;gap:3px;align-items:center;padding:3px 6px;border-right:1px solid var(--line)}
+#wbar .grp:last-child{border-right:0}
+#wbar button{padding:3px 8px;min-width:28px;font-size:13px}
+#wbar select,#wbar input{width:auto;max-width:150px;padding:3px 4px;font-size:13px}
+#wbar input[type=number]{width:56px}#wbar input[type=text]{width:110px}#wbar input[type=color]{width:30px;height:26px;padding:0}#wbar input[type=checkbox]{width:auto}
+#wbar button.on{background:var(--acc);color:var(--accfg)}
+#wbar .lb{font-size:11px;color:var(--mute)}
+body.pv #wbar{position:static;margin:6px 0 0}
+#sheet h1{font-size:1.6em;margin:10px 0}#sheet h2{font-size:1.3em;margin:10px 0}
+#sheet ul,#sheet ol{margin:6px 0 6px 26px}
+#sheet td p,#sheet th p{margin:0}
+#sheet table.nb td,#sheet table.nb th{border-color:transparent}
+#sheet .pb{border-top:2px dashed #999;height:6px;margin:12px 0;position:relative;break-after:page;page-break-after:always}
+#sheet .pb::after{content:"Page break (double-click to remove)";position:absolute;right:0;top:-1.3em;font:9px sans-serif;color:#888;background:#fff}
+#sheet{background:#fff;color:#000;margin:0 auto;box-shadow:0 1px 8px rgba(0,0,0,.25);overflow-wrap:anywhere;outline:none}
+#sheet table{border-collapse:collapse;width:100%;margin:8px 0}
+#sheet th,#sheet td{border:1px solid #000;padding:4px 6px;vertical-align:top;text-align:left}
+#sheet h3{text-align:center;text-decoration:underline;margin:10px 0}
+#sheet .c{text-align:center}#sheet .r{text-align:right}
+@media print{#sheet{background-image:none!important}body.proof #sheet::before{content:"DRAFT – FOR CORRECTION";position:fixed;top:38%;left:8%;font-size:56pt;font-weight:700;color:rgba(200,0,0,.14);transform:rotate(-30deg);white-space:nowrap}}
+@media print{
+ body{background:#fff;padding:0}header,.ui,.noprint,#pvbar,.pvh,.pvf{display:none!important}
+ main{display:block;padding:0}.scroll{overflow:visible}
+ #sheet{box-shadow:none;margin:0;width:auto!important;min-height:0!important;padding:0!important}
+ .scroll{zoom:1!important}#sheet .pb{border:0!important;height:0!important;margin:0!important}#sheet .pb::after{content:none!important}
+}
+</style></head><body>
+<header style="position:relative"><div id="clk" aria-label="Clock" style="position:absolute;top:12px;right:16px;font:600 15px ui-monospace,Consolas,monospace;text-align:right"></div><h1>Diligent in Law – Advocate Thangarajus</h1>
+<p>Drafting, filing set-up and printing for court pleadings, written arguments, vakalat and legal opinions</p></header>
+<div id="prbar" class="noprint"></div>
+<div id="pvbar" class="noprint"><b>Print preview</b> – edit the draft on the page below, and edit the header, footer, font and margins here. Every change is saved to the main sheet options.
+<div class="g">
+<div><label>Header</label><select id="p_hshow"><option value="1">Show</option><option value="0">Remove</option></select></div>
+<div><label>Header left</label><input id="p_hl"></div><div><label>Header centre</label><input id="p_hc"></div><div><label>Header right</label><input id="p_hr"></div>
+<div><label>Header on first page</label><select id="p_hfirst"><option value="1">Yes</option><option value="0">No</option></select></div>
+</div>
+<div class="g">
+<div><label>Footer</label><select id="p_fshow"><option value="1">Show</option><option value="0">Remove</option></select></div>
+<div><label>Footer left</label><input id="p_fl"></div><div><label>Footer centre</label><input id="p_fc"></div><div><label>Footer right</label><input id="p_fr"></div>
+<div><label>Header/footer size (pt)</label><input id="p_hfs" type="number" min="6" max="16"></div>
+</div>
+<div class="g">
+<div><label>Font size (pt)</label><input id="p_fsize" type="number" min="8" max="24"></div><div><label>Line spacing</label><input id="p_lh" type="number" step="0.1" min="1" max="3"></div>
+<div><label>Top mm</label><input id="p_mt" type="number"></div><div><label>Bottom mm</label><input id="p_mb" type="number"></div><div><label>Left mm</label><input id="p_ml" type="number"></div><div><label>Right mm</label><input id="p_mr" type="number"></div>
+</div>
+<div class="g b"><div><label style="display:flex;gap:4px;align-items:center"><input type="checkbox" id="p_proof" style="width:auto"> Draft watermark</label></div>
+<div><button class="p" id="pvprint">Print now</button></div><div><button id="pvreset">Reset header and footer</button></div><div><button id="pvclose">Close preview</button></div></div>
+<div class="note">Words you can type: {page} {pages} {date} {case} {client}. Header and footer print in Chrome and Edge. In the print window, switch off the browser’s own “Headers and footers” so they do not repeat.</div>
+</div>
+<main>
+<div class="ui">
+<section><h2>1. Court and filing</h2>
+<label>State of filing (choose first)</label><select id="state"><option value="">Select State</option></select>
+<div id="strules" class="note" style="margin:6px 0"></div>
+<label>Place (city / town)</label><input id="place" placeholder="Chennai">
+<label>Court</label><select id="court"></select>
+<input id="ocourt" placeholder="Other court or tribunal name, if not in the list (optional)" style="margin-top:6px">
+<button id="sugb" style="margin-top:6px">Suggest court from the facts</button><div id="sug" class="note"></div>
+<label>Type of filing</label><select id="ftype"></select>
+<div class="row"><div><label>Case number</label><input id="cno" placeholder="Leave blank until the court gives the number"></div></div>
+<label>Petitioner / plaintiff (with address)</label><textarea id="p1" style="min-height:50px"></textarea>
+<label>Respondent / defendant (with address)</label><textarea id="p2" style="min-height:50px"></textarea>
+<label>Your client</label><input id="client" placeholder="e.g. 4th Respondent">
+</section>
+<section><h2>2. Jurisdiction, valuation, court fee</h2>
+<div class="row"><div><label>Suit / claim value (Rs.)</label><input id="val"></div><div><label>Court fee / stamp duty paid (Rs.)</label><input id="fee"></div></div>
+<div class="row"><div><label>Junior court limit, your State (Rs.)</label><input id="lim1"></div><div><label>Sub-Court limit, your State (Rs.)</label><input id="lim2"></div></div>
+<label>Jurisdiction basis (territorial, pecuniary, subject-matter)</label><textarea id="jur" style="min-height:60px"></textarea>
+<p class="note">Court fee, stamp duty and pecuniary limits differ by state and change by amendment. Enter the figures after checking the current State schedule.</p>
+</section>
+<section><h2>3. Facts and circumstances</h2>
+<label>Brief of the facts (one paragraph per line)</label><textarea id="facts" style="min-height:160px"></textarea>
+<label>Grounds / arguments (one per line)</label><textarea id="grounds" style="min-height:100px"></textarea>
+<label>Prayer (one per line)</label><textarea id="prayer" style="min-height:70px"></textarea>
+</section>
+<section><h2>4. Documents in order of priority</h2>
+<div id="docs"></div><button id="adddoc">Add document</button>
+<p class="note">Put the strongest proof first. Use the arrows to reorder. Annexure numbers follow this order.</p>
+</section>
+<section><h2>5. Case laws table</h2>
+<div id="laws"></div><button id="addlaw">Add case law</button>
+<h2 style="margin-top:14px">Sections and Acts relied on</h2><div id="secs"></div><button id="addsec">Add section</button>
+<label>Find case laws and sections (opens Indian Kanoon in a new tab)</label>
+<div class="row"><input id="q" placeholder="e.g. gift deed Section 23 senior citizens"><button id="sq">Search</button></div>
+<label>Paste a list from Claude. Case laws: Case | Court, date | Holding | Para. Sections: Act | Section | Relevance. One per line.</label>
+<textarea id="imp" style="min-height:60px"></textarea><div class="row"><button id="impl">Import as case laws</button><button id="imps">Import as sections</button></div>
+<label><input type="checkbox" id="showlaws" checked style="width:auto"> Print case laws table in the filing</label>
+<label><input type="checkbox" id="showsecs" checked style="width:auto"> Print sections table in the filing</label>
+<p class="note">Check every citation and paragraph number against the certified judgment before filing.</p>
+</section>
+<section><h2>6. Advocates and docket</h2>
+<div id="advs"></div><button id="addadv">Add advocate</button>
+<label><input type="checkbox" id="caveat" checked style="width:auto"> Reserve right to file caveat petition (Section 148-A CPC)</label>
+<label><input type="checkbox" id="sign" style="width:auto"> Add place, date and advocate name at the end of the draft</label>
+<label><input type="checkbox" id="docket" style="width:auto"> Add advocate docket at the foot of the last page</label>
+</section>
+<section><h2>7. Language, font and page</h2>
+<div class="row"><div><label>Language</label><select id="lang"></select></div><div><label>Font</label><select id="font"></select></div></div>
+<div class="row"><div><label>Font size (pt)</label><input id="fsize" type="number" value="14" min="8" max="24"></div><div><label>Line spacing</label><input id="lh" type="number" step="0.1" value="1.8" min="1" max="3"></div></div>
+<div class="row"><div><label>Paper</label><select id="paper"><option value="210x297">A4</option><option value="216x356">Legal (India)</option><option value="216x279">Letter</option><option value="148x210">A5</option><option value="297x420">A3</option></select></div><div><label>Orientation</label><select id="orient"><option value="p">Portrait</option><option value="l">Landscape</option></select></div></div>
+<div class="row"><div><label>Default alignment</label><select id="palign"><option value="left">Left</option><option value="justify">Justified</option><option value="center">Centre</option><option value="right">Right</option></select></div><div><label>Columns</label><select id="cols"><option value="1">1</option><option value="2">2</option><option value="3">3</option></select></div></div>
+<div class="row"><div><label>Top mm</label><input id="mt" type="number" value="25"></div><div><label>Bottom mm</label><input id="mb" type="number" value="25"></div><div><label>Left mm</label><input id="ml" type="number" value="38"></div><div><label>Right mm</label><input id="mr" type="number" value="25"></div></div>
+<p class="note">Check the font size, margin and paper rules of the court you are filing in.</p>
+</section>
+<section><h2>7A. Header and footer</h2>
+<div class="row"><div><label>Header</label><select id="hshow"><option value="1">Show</option><option value="0">Remove</option></select></div><div><label>Header on first page</label><select id="hfirst"><option value="1">Yes</option><option value="0">No</option></select></div></div>
+<label>Header left</label><input id="hl" placeholder="e.g. {case}">
+<label>Header centre</label><input id="hc" placeholder="e.g. IN THE HIGH COURT">
+<label>Header right</label><input id="hr" placeholder="e.g. {client}">
+<div class="row"><div><label>Footer</label><select id="fshow"><option value="1">Show</option><option value="0">Remove</option></select></div><div><label>Header/footer size (pt)</label><input id="hfs" type="number" value="8" min="6" max="16"></div></div>
+<label>Footer left</label><input id="fl" value="Diligent in Law – Advocate Thangarajus">
+<label>Footer centre</label><input id="fc" value="Page {page} of {pages}">
+<label>Footer right</label><input id="fr" value="Printed: {date}">
+<div class="row" style="margin-top:8px"><button id="hfreset">Reset to standard</button><button id="hfprev">Preview and edit</button></div>
+<p class="note">Clear a box to leave that place empty, or choose Remove to drop the whole header or footer. Words you can type: {page} {pages} {date} {case} {client}. Every print opens a preview where the same options can be edited, and the changes are saved here.</p>
+</section>
+<section><h2>8. Review, proof print and legal aids</h2>
+<div class="row"><button id="chkb">Check before filing</button><button id="guide">Page guides</button><button id="proof">Proof print</button></div><div id="chk" class="note"></div>
+<label>Standard legal sentences</label><select id="ph"></select>
+<div class="row"><button id="phf">Add to facts</button><button id="phg">Add to grounds</button></div>
+<div class="row"><button id="t1">Tidy facts</button><button id="t2">Tidy grounds</button><button id="t3">Tidy prayer</button></div>
+<label>Legal dictionary and maxims</label><input id="dq" placeholder="Search a term or maxim"><div id="dres" style="max-height:220px;overflow:auto"></div>
+<label>Landmark judgments (verify before citing)</label><div id="lm" style="max-height:220px;overflow:auto"></div>
+<label>Client instruction sheet</label><div class="row"><select id="ctype"><option>Individual</option><option>Private limited company</option><option>Public limited company</option></select><button id="cbtn">Show on page</button></div>
+</section>
+<section><h2>9. Agreements and deeds</h2>
+<label>Agreement or deed</label><select id="atype"></select>
+<label>Property class</label><select id="aprop"></select>
+<label>Property location and Sub-Registrar office (where the property is situated)</label><input id="asr" placeholder="e.g. Sub-Registrar Office, Komarapalayam">
+<label>First party (name, father/company, address, ID)</label><textarea id="ap1" style="min-height:55px"></textarea>
+<label>Second party (name, father/company, address, ID)</label><textarea id="ap2" style="min-height:55px"></textarea>
+<label>Subject (property, work, business, loan purpose)</label><textarea id="asub" style="min-height:50px"></textarea>
+<div class="row"><div><label>Amount / rent / price (Rs.)</label><input id="aamt"></div><div><label>Term / period</label><input id="aterm" placeholder="11 months"></div></div>
+<div class="row"><div><label>Advance rent (months)</label><select id="aadv"></select></div><div><label>Advance is</label><select id="aadj"><option value="first">adjusted against the first months\u2019 rent</option><option value="last">adjusted against the last months\u2019 rent</option><option value="refund">refundable advance, not adjusted</option></select></div></div>
+<div class="row"><div><label>Security deposit (Rs.)</label><input id="adep"></div><div><label>Mode of payment</label><select id="apay"><option>bank transfer</option><option>cheque</option><option>UPI</option><option>cash</option></select></div></div>
+<label>Date of agreement</label><input id="adate" placeholder="Leave blank for today">
+<label>Beneficiary of the property is</label><select id="aben"><option>Second Party</option><option>First Party</option></select>
+<label><input type="checkbox" id="aperm" checked style="width:auto"> Permission only: no ownership or adverse possession claim (use for rent, lease and licence)</label>
+<div class="row"><div><label>Aadhaar number</label><input id="aad" inputmode="numeric" autocomplete="off"></div><div><label>PAN</label><input id="pan" autocomplete="off"></div></div>
+<label>Bank account holder name</label><input id="bk" autocomplete="off">
+<div class="row"><div><label>Account number</label><input id="ban" inputmode="numeric" autocomplete="off"></div><div><label>IFSC</label><input id="ifsc" autocomplete="off"></div></div>
+<label>Apartment association or society name</label><input id="aasn">
+<label>Other members who must sign (one per line: name, relation)</label><textarea id="amem" style="min-height:50px"></textarea>
+<label><input type="checkbox" id="amask" checked style="width:auto"> Mask Aadhaar and account numbers in the printed copy</label>
+<p class="note">Identity and bank details are not saved in the browser. Re-enter them each time.</p>
+<button class="p" id="agr2" style="margin-top:8px">Generate agreement</button> <button id="aff" style="margin-top:8px">Beneficiary affidavit</button>
+<p class="note">The heading shows in Tamil or Hindi when you choose that language in section 7. Other languages show the English heading. Ask me in chat for the full text in any Indian language.</p>
+</section>
+<section><h2>10. Screen colours and security</h2>
+<label>Colour theme</label><select id="thm"></select>
+<div class="row"><div><label>Accent</label><input id="cacc" type="color" value="#1d5c7a"></div><div><label>Background</label><input id="cbg" type="color" value="#eef1f5"></div><div><label>Panels</label><input id="cpn" type="color" value="#ffffff"></div></div>
+<label>Passcode lock</label><input id="spw" type="password" placeholder="Passcode (6 or more characters)">
+<div class="row"><button id="spset">Set passcode</button><button id="splock">Lock now</button><button id="spoff">Remove passcode</button></div>
+<label>Auto-lock after (minutes, 0 = off)</label><input id="sidle" type="number" value="10" min="0">
+<div id="slog" class="note"></div><button id="sclear" style="margin-top:6px">Clear all saved data</button>
+<p class="note">This is a screen lock that keeps casual viewers out. It cannot stop a hacker, and a file on your computer cannot detect a hacker or record an IP address. IP addresses can be hidden or changed, and no program can promise to be unhackable. For stronger protection use a locked computer account, disk encryption and backups. To log who reaches a hosted version, a developer must host it on a secure server with login, two-step verification and access logs.</p>
+</section>
+<section><h2>11. Receipts</h2>
+<label>Received from (name)</label><input id="rn" autocomplete="off">
+<div class="row"><div><label>Mobile number</label><input id="rm" inputmode="tel" placeholder="9876543210" autocomplete="off"></div><div><label>Amount (Rs.)</label><input id="ra" inputmode="numeric"></div></div>
+<div class="row"><div><label>Towards</label><select id="rp"><option>monthly rent</option><option>advance rent</option><option>security deposit</option><option>maintenance charges</option><option>other payment</option></select></div><div><label>Period / month</label><input id="rper" placeholder="November 2026"></div></div>
+<div class="row"><div><label>Mode</label><select id="rmo"><option>bank transfer</option><option>cheque</option><option>UPI</option><option>cash</option></select></div><div><label>Reference (UTR / cheque no.)</label><input id="rref"></div></div>
+<label>Property</label><input id="rprop" placeholder="Leave blank to use the subject in section 9">
+<label>Received by</label><input id="rby" placeholder="Owner or advocate name">
+<div class="row"><button class="p" id="rgen">Generate receipt</button><button id="rwa">Send by WhatsApp</button><button id="rsms">Send by SMS</button><button id="rcp">Copy text</button></div>
+<label>My own WhatsApp number (for my copy)</label><input id="rmy" inputmode="tel" value="8903440031" autocomplete="off">
+<div class="row"><button id="rpdf">Download PDF</button><button id="rshare">Share PDF</button><button id="rmine">WhatsApp my copy</button></div>
+<div id="rlog" class="note" style="margin-top:6px"></div>
+<p class="note">Sending opens WhatsApp or your SMS app with the receipt typed in, and you press send yourself. This page cannot send messages by itself. Automatic sending needs a WhatsApp Business or SMS gateway service on a server. The mobile number is not saved.</p>
+</section>
+<section><button class="p" id="gen">Generate draft</button> <button id="print">Print</button> <button id="vak">Vakalat</button> <button id="agr">Agreement</button> <button id="adv">Legal opinion</button> <button id="theme">Light / dark</button>
+<p class="note">Edit the draft directly on the page at the right. Generating again replaces your edits. Data stays in this browser only.</p></section>
+</div>
+<div class="rt"><div id="wbar" class="noprint"></div><div class="scroll" id="scr"><div id="pvh" class="pvh noprint"></div><div id="sheet" contenteditable="true" spellcheck="false"></div><div id="pvf" class="pvf noprint"></div></div></div>
+</main>
+<div id="psel"></div>
+<div id="lk" style="display:none;position:fixed;inset:0;z-index:99;background:var(--bg);align-items:center;justify-content:center;flex-direction:column;gap:8px;padding:20px"><h2>Diligent in Law – locked</h2><input id="lkp" type="password" placeholder="Passcode" style="max-width:260px"><button class="p" id="lku">Unlock</button><div id="lkm" class="note"></div></div>
+<script>
+var $=function(i){return document.getElementById(i)};
+var COURTS=["Municipal / Small Causes Court","Munsif / Civil Judge (Junior Division)","Sub-Court / Civil Judge (Senior Division)","Additional District Court","Principal District Court","Family Court","Magistrate Court","Sessions Court","Consumer Commission","Tribunal","High Court","Supreme Court of India"];
+var FT=["Plaint","Written Statement","Counter Statement / Counter Affidavit","Written Arguments","Writ Petition","Appeal","Revision Petition","Special Leave Petition","Bail Application","Interlocutory Application","Execution Petition","Complaint"];
+var LANGS=[["English","Noto Serif","Times New Roman"],["Tamil","Noto Sans Tamil","Latha"],["Hindi","Noto Sans Devanagari","Mangal"],["Marathi","Noto Sans Devanagari","Mangal"],["Telugu","Noto Sans Telugu","Gautami"],["Kannada","Noto Sans Kannada","Tunga"],["Malayalam","Noto Sans Malayalam","Kartika"],["Bengali","Noto Sans Bengali","Vrinda"],["Gujarati","Noto Sans Gujarati","Shruti"],["Punjabi","Noto Sans Gurmukhi","Raavi"],["Odia","Noto Sans Oriya","Kalinga"],["Urdu","Noto Naskh Arabic","Arial"]];
+var FONTS=["Times New Roman","Arial","Latha","Nirmala UI","Mangal","Gautami","Tunga","Kartika","Vrinda","Shruti","Raavi","Kalinga","Noto Serif","Noto Sans Tamil","Noto Sans Devanagari","Noto Sans Telugu","Noto Sans Kannada","Noto Sans Malayalam","Noto Sans Bengali","Noto Sans Gujarati","Noto Sans Gurmukhi","Noto Sans Oriya","Noto Naskh Arabic"];
+function fill(id,arr){arr.forEach(function(a){var o=document.createElement("option");o.textContent=a;$(id).appendChild(o)})}
+fill("court",COURTS);fill("ftype",FT);fill("font",FONTS);
+LANGS.forEach(function(l){var o=document.createElement("option");o.textContent=l[0];$("lang").appendChild(o)});
+var S={docs:[{t:"",n:""}],laws:[{c:"",ct:"",h:"",p:""}],advs:[{n:"Thangaraju",e:""}]};
+var IDS=["orient","palign","cols","hshow","hfirst","hl","hc","hr","fshow","fl","fc","fr","hfs","rmy","aadv","aadj","adep","apay","aprop","asr","sidle","atype","ap1","ap2","asub","aamt","aterm","adate","court","ocourt","lim1","lim2","ftype","state","place","cno","p1","p2","client","val","fee","jur","facts","grounds","prayer","lang","font","fsize","lh","paper","mt","mb","ml","mr"];
+function save(){try{var o={S:S};IDS.forEach(function(i){o[i]=$(i).value});o.caveat=$("caveat").checked;o.docket=$("docket").checked;o.sign=$("sign").checked;o.showlaws=$("showlaws").checked;o.showsecs=$("showsecs").checked;localStorage.setItem("dil1",JSON.stringify(o))}catch(e){}}
+function load(){try{var o=JSON.parse(localStorage.getItem("dil1")||"null");if(!o)return;S=o.S;IDS.forEach(function(i){if(o[i]!==undefined)$(i).value=o[i]});$("caveat").checked=o.caveat;$("docket").checked=o.docket;$("sign").checked=!!o.sign;$("showlaws").checked=o.showlaws!==false;$("showsecs").checked=o.showsecs!==false}catch(e){}}
+function esc(s){return String(s||"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;")}
+function mk(tag,props){var e=document.createElement(tag);for(var k in props)e[k]=props[k];return e}
+function render(){
+ var d=$("docs");d.innerHTML="";
+ S.docs.forEach(function(x,i){var r=mk("div",{className:"item"});
+  var t=mk("input",{value:x.t,placeholder:"Document description",oninput:function(){x.t=this.value;save()}});
+  var u=mk("button",{textContent:"\u2191",title:"Move up",onclick:function(){if(i>0){S.docs.splice(i-1,0,S.docs.splice(i,1)[0]);render();save()}}});
+  var w=mk("button",{textContent:"\u2193",title:"Move down",onclick:function(){if(i<S.docs.length-1){S.docs.splice(i+1,0,S.docs.splice(i,1)[0]);render();save()}}});
+  var z=mk("button",{textContent:"\u00d7",title:"Remove",onclick:function(){S.docs.splice(i,1);render();save()}});
+  r.append(mk("span",{textContent:(i+1)+"."}),t,u,w,z);d.append(r)});
+ var l=$("laws");l.innerHTML="";
+ S.laws.forEach(function(x,i){var r=mk("div",{className:"item",style:"flex-wrap:wrap"});
+  [["c","Case name and citation"],["ct","Court, date"],["h","Holding relied on"],["p","Para"]].forEach(function(f){r.append(mk("input",{value:x[f[0]],placeholder:f[1],style:"flex:1 1 45%",oninput:function(){x[f[0]]=this.value;save()}}))});
+  r.append(mk("button",{textContent:"\u00d7",title:"Remove",onclick:function(){S.laws.splice(i,1);render();save()}}));l.append(r)});
+ var a=$("advs");a.innerHTML="";
+ S.advs.forEach(function(x,i){var r=mk("div",{className:"item"});
+  r.append(mk("input",{value:x.n,placeholder:"Advocate name",oninput:function(){x.n=this.value;save()}}),mk("input",{value:x.e,placeholder:"Enrolment no.",oninput:function(){x.e=this.value;save()}}));
+  if(i>0)r.append(mk("button",{textContent:"\u00d7",title:"Remove",onclick:function(){S.advs.splice(i,1);render();save()}}));a.append(r)})
+}
+function lines(id){return $(id).value.split("\n").filter(function(s){return s.trim()})}
+function advBlock(){return S.advs.filter(function(a){return a.n.trim()}).map(function(a){return "Advocate "+esc(a.n)+(a.e?" (Enrolment No. "+esc(a.e)+")":"")}).join("<br>")}
+function dock(){return $("docket").checked?"<hr><p><b>Docket:</b> Prepared and settled by "+advBlock()+" – Diligent in Law Advocate Thangarajus. Legal consultation only with Advocate Thangaraju.</p>":""}
+function gen(){
+ var h="<p class='c'><b>"+hd()+"</b></p>";
+ h+="<p class='r'><b>"+(esc($("cno").value)||"Case No. ____________ of 20____")+"</b></p>";
+ h+="<table><tr><td>"+esc($("p1").value).replace(/\n/g,"<br>")+"</td><td class='c'>Versus</td><td>"+esc($("p2").value).replace(/\n/g,"<br>")+"</td></tr></table>";
+ h+="<h3>"+esc($("ftype").value.toUpperCase())+(($("client").value)?" ON BEHALF OF THE "+esc($("client").value.toUpperCase()):"")+"</h3>";
+ if($("val").value||$("fee").value||$("jur").value){h+="<p><b>Jurisdiction, valuation and court fee:</b> "+(esc($("jur").value)||"")+(($("val").value)?" Value for jurisdiction: Rs. "+esc($("val").value)+".":"")+(($("fee").value)?" Court fee / stamp duty paid: Rs. "+esc($("fee").value)+".":"")+"</p>"}
+ h+="<p><b>FACTS OF THE CASE</b></p>";lines("facts").forEach(function(f,i){h+="<p>"+(i+1)+". "+esc(f)+"</p>"});
+ var docs=S.docs.filter(function(x){return x.t.trim()});
+ if(docs.length){h+="<p><b>DOCUMENTS RELIED ON</b></p><table><tr><th>Annexure</th><th>Description</th></tr>";docs.forEach(function(x,i){h+="<tr><td>R-"+(i+1)+"</td><td>"+esc(x.t)+"</td></tr>"});h+="</table>"}
+ var g=lines("grounds");if(g.length){h+="<p><b>GROUNDS</b></p>";g.forEach(function(x,i){h+="<p>"+String.fromCharCode(65+i%26)+". "+esc(x)+"</p>"})}
+ var laws=S.laws.filter(function(x){return x.c.trim()});
+ if(laws.length&&$("showlaws").checked){h+="<p><b>CASE LAWS RELIED ON</b></p><table><tr><th>No.</th><th>Case</th><th>Court and date</th><th>Holding relied on</th><th>Para</th></tr>";laws.forEach(function(x,i){h+="<tr><td>"+(i+1)+"</td><td>"+esc(x.c)+"</td><td>"+esc(x.ct)+"</td><td>"+esc(x.h)+"</td><td>"+esc(x.p)+"</td></tr>"});h+="</table>"}
+ var secs=S.secs.filter(function(x){return (x.a||x.s)});if(secs.length&&$("showsecs").checked){h+="<p><b>SECTIONS AND ACTS RELIED ON</b></p><table><tr><th>No.</th><th>Act</th><th>Section</th><th>Relevance</th></tr>";secs.forEach(function(x,i){h+="<tr><td>"+(i+1)+"</td><td>"+esc(x.a)+"</td><td>"+esc(x.s)+"</td><td>"+esc(x.r)+"</td></tr>"});h+="</table>"}
+ if($("caveat").checked)h+="<p><b>RESERVATION OF CAVEAT:</b> The "+(esc($("client").value)||"party")+" reserves the right to file caveat petition(s) under Section 148-A of the Code of Civil Procedure, 1908 and the corresponding rules of the High Court and the Supreme Court, so that no order is passed in any appeal or proceeding against the order in this matter without notice to and hearing the "+(esc($("client").value)||"party")+".</p>";
+ var pr=lines("prayer");if(pr.length){h+="<p><b>PRAYER</b></p><p>It is therefore prayed that this Hon\u2019ble Court may be pleased to:</p>";pr.forEach(function(x,i){h+="<p>("+String.fromCharCode(97+i%26)+") "+esc(x)+"</p>"})}
+ if($("sign").checked)h+="<p>Place: "+esc($("place").value)+"<br>Date: "+new Date().toLocaleDateString("en-GB")+"</p><p class='r'>"+advBlock()+"</p>";h+=dock();
+ $("sheet").innerHTML=h;style()
+}
+function style(){
+ var w=pdim(),s=$("sheet").style;var lg=LANGS.filter(function(l){return l[0]==$("lang").value})[0];
+ s.width=w[0]+"mm";s.minHeight=w[1]+"mm";
+ s.padding=[$("mt").value,$("mr").value,$("mb").value,$("ml").value].map(function(v){return v+"mm"}).join(" ");
+ s.fontFamily="'"+$("font").value+"',"+(lg?"'"+lg[1]+"','"+lg[2]+"',":"")+"serif";
+ s.fontSize=$("fsize").value+"pt";s.lineHeight=$("lh").value;s.textAlign=$("palign").value;var nc=parseInt($("cols").value)||1;s.columnCount=nc>1?nc:"auto";s.columnGap="10mm";
+ if($("lang").value==="Urdu")s.direction="rtl";else s.direction="ltr";
+ var st=$("pg")||mk("style",{id:"pg"});document.head.append(st);
+ st.textContent="@page{size:"+w[0]+"mm "+w[1]+"mm;margin:"+[$("mt").value,$("mr").value,$("mb").value,$("ml").value].map(function(v){return v+"mm"}).join(" ")+"}"
+}
+$("lang").onchange=function(){var l=LANGS.filter(function(x){return x[0]==$("lang").value})[0];$("font").value=FONTS.indexOf(l[2])>-1?l[2]:l[1];style();save()};
+IDS.forEach(function(i){$(i).addEventListener("input",function(){save();style()});$(i).addEventListener("change",function(){save();style()})});
+$("caveat").onchange=$("docket").onchange=$("sign").onchange=$("showlaws").onchange=$("showsecs").onchange=save;
+$("adddoc").onclick=function(){S.docs.push({t:""});render();save()};
+$("addlaw").onclick=function(){S.laws.push({c:"",ct:"",h:"",p:""});render();save()};
+$("addadv").onclick=function(){S.advs.push({n:"",e:""});render();save()};
+$("gen").onclick=gen;$("print").onclick=function(){style();window.print()};
+$("vak").onclick=function(){$("sheet").innerHTML="<h3>VAKALATNAMA</h3><p class='c'><b>"+hd()+"</b><br>"+(esc($("cno").value)||"Case No. ____________ of 20____")+"</p><p>I/We, "+(esc($("client").value)||"__________")+", do hereby appoint and retain "+advBlock()+" to appear, act and plead for me/us in the above matter, to file and withdraw pleadings, applications and documents, to deposit and receive money, to compromise only with my/our written consent, and to do all acts necessary for the conduct of the case, and I/we agree to ratify all acts done by the said Advocate(s) in pursuance of this authority.</p><p>Place: "+esc($("place").value)+"<br>Date: "+new Date().toLocaleDateString("en-GB")+"</p><p class='r'>Signature of the client</p><p>Accepted:<br>"+advBlock()+"</p>";style()};
+$("adv").onclick=function(){$("sheet").innerHTML="<h3>LEGAL OPINION</h3><p><b>Client:</b> "+(esc($("client").value)||"__________")+"<br><b>Subject:</b> __________<br><b>Date:</b> "+new Date().toLocaleDateString("en-GB")+"</p><p><b>1. Facts furnished by the client</b></p>"+lines("facts").map(function(f,i){return "<p>"+(i+1)+". "+esc(f)+"</p>"}).join("")+"<p><b>2. Documents examined</b></p>"+S.docs.filter(function(x){return x.t}).map(function(x,i){return "<p>"+(i+1)+". "+esc(x.t)+"</p>"}).join("")+"<p><b>3. Questions of law</b></p><p>__________</p><p><b>4. Opinion and advice</b></p><p>__________</p><p><i>This opinion is confined to the facts and documents furnished and is given only by the Advocate named below. Consultation is only with Advocate Thangaraju.</i></p><p class='r'>"+advBlock()+"</p>";style()};
+$("theme").onclick=function(){var r=document.documentElement;r.dataset.theme=(r.dataset.theme==="dark")?"light":"dark"};
+S.secs=S.secs||[];
+function rs(){var l=$("secs");l.innerHTML="";S.secs.forEach(function(x,i){var r=mk("div",{className:"item",style:"flex-wrap:wrap"});[["a","Act"],["s","Section"],["r","Relevance"]].forEach(function(f){r.append(mk("input",{value:x[f[0]]||"",placeholder:f[1],style:"flex:1 1 30%",oninput:function(){x[f[0]]=this.value;save()}}))});r.append(mk("button",{textContent:"\u00d7",title:"Remove",onclick:function(){S.secs.splice(i,1);render();save()}}));l.append(r)})}
+var _r=render;render=function(){_r();rs()};
+function imp(k){$("imp").value.split("\n").filter(function(s){return s.trim()}).forEach(function(s){var p=s.split("|").map(function(x){return x.trim()});if(k==="l")S.laws.push({c:p[0]||"",ct:p[1]||"",h:p[2]||"",p:p[3]||""});else S.secs.push({a:p[0]||"",s:p[1]||"",r:p[2]||""})});$("imp").value="";render();save()}
+$("impl").onclick=function(){imp("l")};$("imps").onclick=function(){imp("s")};
+$("addsec").onclick=function(){S.secs.push({a:"",s:"",r:""});render();save()};
+$("sq").onclick=function(){var q=$("q").value.trim();if(q)window.open("https://indiankanoon.org/search/?formInput="+encodeURIComponent(q),"_blank","noopener")};
+
+var PH=["That the petitioner is a senior citizen and is entitled to the protection of the Maintenance and Welfare of Parents and Senior Citizens Act, 2007.","It is humbly submitted that the impugned order is arbitrary, unreasonable and contrary to law.","That the findings recorded are perverse and are not supported by any evidence on record.","That the principles of natural justice have been violated, as no reasonable opportunity of being heard was given.","That the cause of action arose within the territorial jurisdiction of this Hon\u2019ble Court.","That no other proceeding on the same cause of action has been filed before this or any other Court.","That the balance of convenience lies in favour of the petitioner, and irreparable loss will be caused if interim relief is not granted.","That there is no other alternative and efficacious remedy available to the petitioner."];
+PH.forEach(function(t,i){$("ph").append(mk("option",{textContent:t.slice(0,58)+"\u2026",value:i}))});
+function addTo(id,t){var e=$(id);e.value=(e.value.trim()?e.value.trim()+"\n":"")+t;save()}
+$("phf").onclick=function(){addTo("facts",PH[$("ph").value])};$("phg").onclick=function(){addTo("grounds",PH[$("ph").value])};
+function tidy(id){$(id).value=$(id).value.split("\n").map(function(x){x=x.replace(/\s+/g," ").trim();if(!x)return "";x=x.replace(/\s+([,.;:])/g,"$1").replace(/([,;])(?=[A-Za-z])/g,"$1 ").replace(/\bcan not\b/gi,"cannot");x=x.charAt(0).toUpperCase()+x.slice(1);if(!/[.;:?!]$/.test(x))x+=".";return x}).filter(Boolean).join("\n");save()}
+$("t1").onclick=function(){tidy("facts")};$("t2").onclick=function(){tidy("grounds")};$("t3").onclick=function(){tidy("prayer")};
+var D=[["Affidavit","A written statement of facts sworn or affirmed before an authorised officer."],["Cause of action","The set of facts that gives a person the right to sue."],["Certiorari","A writ quashing the order of a lower court or authority."],["Estoppel","A bar preventing a person from denying what they earlier represented."],["Ex parte","Done or decided in the absence of the other party."],["Injunction","A court order to do, or stop doing, a specific act."],["Laches","Unreasonable delay in asserting a right, which may defeat relief."],["Locus standi","The right to approach and be heard by the court."],["Mandamus","A writ commanding a public authority to perform its duty."],["Plaint","The written statement that starts a civil suit."],["Prima facie","On first view; sufficient unless disproved."],["Status quo","The existing position, to be maintained until further orders."],["Suo motu","On the court\u2019s own motion."],["Bona fide","In good faith."],["Decree","The formal expression of a civil court\u2019s adjudication of the rights of parties."]];
+var M=[["Audi alteram partem","Hear the other side; no one should be condemned unheard."],["Nemo judex in causa sua","No one should be a judge in their own cause; decisions must be free from bias."],["Ubi jus ibi remedium","Where there is a right, there is a remedy."],["Actus non facit reum nisi mens sit rea","An act is not guilty unless the mind is guilty; criminal liability needs a guilty mind."],["Res judicata","A matter already decided between the same parties cannot be re-opened."],["Res ipsa loquitur","The thing speaks for itself; negligence may be inferred from the occurrence."],["Ignorantia juris non excusat","Ignorance of the law is no excuse."],["Volenti non fit injuria","No injury is done to one who consents."],["Ei incumbit probatio qui dicit","The burden of proof lies on the one who asserts."],["Delegatus non potest delegare","A delegate cannot further delegate."],["Qui facit per alium facit per se","One who acts through another acts personally."],["Stare decisis","Stand by what has been decided; follow precedent."],["Ubi jus ibi remedium","There is no wrong without a remedy."],["Lex non cogit ad impossibilia","The law does not compel the impossible."],["Pacta sunt servanda","Agreements must be kept."],["Ex turpi causa non oritur actio","No action arises from a disgraceful cause."],["Fraus omnia vitiat","Fraud vitiates everything."],["Ultra vires","Beyond the powers conferred by law."]];
+function dr(){var q=$("dq").value.toLowerCase(),h=$("dres");h.innerHTML="";D.map(function(x){return ["Term"].concat(x)}).concat(M.map(function(x){return ["Maxim"].concat(x)})).filter(function(x){return !q||(x[1]+" "+x[2]).toLowerCase().indexOf(q)>-1}).forEach(function(x){var d=mk("div",{className:"item",style:"align-items:flex-start"});d.append(mk("span",{innerHTML:"<b>"+x[1]+"</b> ("+x[0]+"): "+x[2],style:"flex:1;font-size:13px"}));if(x[0]==="Maxim")d.append(mk("button",{textContent:"Add",title:"Add to grounds",onclick:function(){addTo("grounds","The maxim \u201c"+x[1]+"\u201d applies: "+x[2])}}));h.append(d)})}
+$("dq").oninput=dr;dr();
+var LM=[["Kesavananda Bharati v. State of Kerala, (1973) 4 SCC 225","Supreme Court of India, 1973","Parliament cannot alter the basic structure of the Constitution."],["Maneka Gandhi v. Union of India, (1978) 1 SCC 248","Supreme Court of India, 1978","Procedure affecting life or liberty under Article 21 must be fair, just and reasonable."],["Olga Tellis v. Bombay Municipal Corporation, (1985) 3 SCC 545","Supreme Court of India, 1985","The right to life includes the right to livelihood."],["Vishaka v. State of Rajasthan, (1997) 6 SCC 241","Supreme Court of India, 1997","Binding guidelines laid down against sexual harassment at the workplace."],["K.S. Puttaswamy v. Union of India, (2017) 10 SCC 1","Supreme Court of India, 2017","The right to privacy is a fundamental right under Article 21."],["Lalita Kumari v. Government of Uttar Pradesh, (2014) 2 SCC 1","Supreme Court of India, 2014","FIR must be registered when information discloses a cognizable offence."],["S. Vanitha v. Deputy Commissioner, Bengaluru Urban, (2021) 15 SCC 730","Supreme Court of India, 2020","The Senior Citizens Act is beneficial legislation to be read purposively."],["Salomon v. A. Salomon & Co. Ltd, [1897] AC 22","House of Lords, 1896","A company has a legal personality separate from its members."],["Foss v. Harbottle, (1843) 2 Hare 461","Court of Chancery, 1843","A wrong to a company is ordinarily redressed by the company itself."],["Donoghue v. Stevenson, [1932] AC 562","House of Lords, 1932","A person owes a duty of care to a neighbour who may be foreseeably harmed."],["Carlill v. Carbolic Smoke Ball Co., [1893] 1 QB 256","Court of Appeal, England, 1892","A public advertisement can be an offer accepted by performance."],["Hadley v. Baxendale, (1854) 9 Exch 341","Court of Exchequer, 1854","Damages for breach are limited to losses reasonably foreseeable."],["Rylands v. Fletcher, (1868) LR 3 HL 330","House of Lords, 1868","Strict liability for escape of dangerous things brought on to land."],["Marbury v. Madison, 5 U.S. (1 Cranch) 137","US Supreme Court, 1803","Courts may review and strike down laws that violate the Constitution."],["Brown v. Board of Education, 347 U.S. 483","US Supreme Court, 1954","Racial segregation in public schools is unconstitutional."]];
+LM.forEach(function(x){var d=mk("div",{className:"item",style:"align-items:flex-start"});d.append(mk("span",{innerHTML:"<b>"+x[0]+"</b> \u2013 "+x[1]+". "+x[2],style:"flex:1;font-size:13px"}),mk("button",{textContent:"Add",title:"Add to case laws",onclick:function(){S.laws.push({c:x[0],ct:x[1],h:x[2],p:""});render();save()}}));$("lm").append(d)});
+$("chkb").onclick=function(){var w=[],a=function(c,m){if(c)w.push(m)};a(!$("place").value.trim(),"Place is blank.");a(!$("p1").value.trim()||!$("p2").value.trim(),"Parties are incomplete.");a(!$("client").value.trim(),"Your client is not stated.");a(!lines("facts").length,"No facts entered.");a(!lines("prayer").length,"No prayer entered.");a(!lines("grounds").length,"No grounds entered.");a(!S.docs.some(function(x){return x.t.trim()}),"No documents listed.");a(S.laws.some(function(x){return x.c.trim()&&!x.p.trim()}),"A case law has no paragraph number.");a(S.advs.some(function(x){return x.n.trim()&&!x.e.trim()}),"An advocate has no enrolment number.");a(/Plaint|Execution|Complaint/.test($("ftype").value)&&(!$("val").value||!$("fee").value),"Valuation or court fee is blank.");a(!$("jur").value.trim(),"Jurisdiction basis is blank.");var t=$("sheet").innerText;a(/\s{2,}\S/.test($("facts").value),"Facts have double spaces. Use Tidy facts.");a(/undefined|NaN/.test(t),"The draft contains an error word.");a(!t.trim(),"The draft is empty. Click Generate draft.");$("chk").innerHTML=w.length?"<b>Fix before filing:</b><br>"+w.map(function(x){return "\u2022 "+x}).join("<br>"):"No problems found in these checks. Read the printed proof once more."};
+window.onafterprint=function(){document.body.classList.remove("proof")};
+$("proof").onclick=function(){style();document.body.classList.add("proof");window.print()};
+var G=false;$("guide").onclick=function(){G=!G;var sh=$("sheet").style,h=+pdim()[1]-(+$("mt").value)-(+$("mb").value);sh.backgroundOrigin="content-box";sh.backgroundClip="content-box";sh.backgroundImage=G?"repeating-linear-gradient(to bottom,transparent 0,transparent calc("+h+"mm - 2px),#e33 calc("+h+"mm - 2px),#e33 "+h+"mm)":"none"};
+$("cbtn").onclick=function(){var t=$("ctype").value,co=t!=="Individual";var L=function(a){return a.map(function(x){return "<p>\u2022 "+x+"</p>"}).join("")};
+var DO=["Keep all original documents safe and give clear copies to your advocate.","Give a true and complete account of the facts, including facts that seem unfavourable.","Attend every hearing, or tell your advocate in advance.","Give any court or legal notice to your advocate on the day you receive it.","Follow your advocate\u2019s advice on dates, fees and stamp duty.","Keep proof of every payment and communication: bank records, letters, messages.","Keep a dated note of events and the names of witnesses.","Tell your advocate if your address, phone or e-mail changes.","Consider lawful settlement through negotiation, mediation or Lok Adalat when advised."];
+var DN=["Do not destroy, change or hide any document or message.","Do not threaten, pressure or pay any witness or the other side.","Do not sign blank papers or papers you have not read.","Do not discuss the case on social media or with the press.","Do not take the law into your own hands: no force, no forcible possession.","Do not give false facts or false documents to the court. It can lead to prosecution and can lose the case.","Do not miss deadlines. Limitation periods can end your right to sue or appeal.","Do not pay anyone who claims to \u201cfix\u201d the case."];
+var CD=["Authorise one officer by board resolution to sign pleadings, vakalat and affidavits.","Once a dispute begins, preserve minutes, registers, accounts, contracts, e-mails and backups.","File statutory returns, financial statements and tax returns on time.","Tell your advocate of every pending tax, regulatory, labour or insolvency matter.","Route all communication on the dispute through one named officer.","Have contracts reviewed by your advocate before signing."];
+var CN=["Do not let directors or staff speak to the other side or the press about the dispute.","Do not delete e-mails, accounting data or backups.","Do not sign for the company without board authority.","Do not make false statements in any filing or disclosure.","Do not transfer or burden disputed assets without advice."];
+var PU=["If the company is listed, make the disclosures that SEBI rules and stock exchange requirements demand, including material litigation.","If the company is listed, do not trade on unpublished price-sensitive information.","Hold board and committee meetings as the law requires and minute them."];
+var h="<h3>CLIENT INSTRUCTIONS \u2013 "+esc(t.toUpperCase())+"</h3><p><b>Client:</b> "+(esc($("client").value)||"__________")+"<br><b>Date:</b> "+new Date().toLocaleDateString("en-GB")+"</p><p><b>What you should do</b></p>"+L(DO.concat(co?CD:[]).concat(t==="Public limited company"?PU:[]))+"<p><b>What you should not do</b></p>"+L(DN.concat(co?CN:[]))+"<p><i>This is general guidance. Advice on your own facts is given only in consultation with Advocate Thangaraju.</i></p><p class='r'>"+advBlock()+"</p>";$("sheet").innerHTML=h;style()};
+
+function hd(){var o=$("ocourt").value.trim(),c=o||$("court").value,loc=[$("place").value,$("state").value].filter(Boolean).join(", ").toUpperCase();
+if(!o&&/^High Court/.test(c))return "IN THE HIGH COURT"+(loc?" AT "+esc(loc):"");
+if(!o&&/^Supreme/.test(c))return "IN THE SUPREME COURT OF INDIA";
+return "IN THE COURT OF THE "+esc(c.toUpperCase())+(loc?" AT "+esc(loc):"")}
+var SUG="";
+$("sugb").onclick=function(){var f=[$("facts").value,$("grounds").value,$("prayer").value,$("p1").value,$("p2").value].join(" ").toLowerCase(),ft=$("ftype").value,v=parseFloat(String($("val").value).replace(/[^0-9.]/g,""))||0,has=function(r){return r.test(f)},c="",why=[],note="";
+if(ft==="Special Leave Petition"){c="Supreme Court of India";why.push("An SLP lies to the Supreme Court under Article 136.")}
+else if(ft==="Writ Petition"){c="High Court";why.push("A writ against a State authority lies to the High Court under Article 226. The Supreme Court is approached under Article 32 only for direct enforcement of fundamental rights.")}
+else if(has(/senior citizen|maintenance tribunal|welfare of parents/)){c="Tribunal";why.push("Applications under the Maintenance and Welfare of Parents and Senior Citizens Act, 2007 go to the Maintenance Tribunal, with appeal to the Appellate Tribunal. A High Court writ lies against their orders.")}
+else if(has(/consumer|deficiency in service|defective goods|unfair trade/)){c="Consumer Commission";why.push("Consumer disputes go to the District, State or National Commission according to the value of the goods or services paid for. Check the current Jurisdiction Rules for the limits.")}
+else if(has(/divorce|conjugal|custody|guardianship|maintenance of (the )?wife|matrimonial/)){c="Family Court";why.push("Matrimonial, custody and related disputes go to the Family Court under the Family Courts Act, 1984.")}
+else if(has(/cheque|section 138|dishonour/)){c="Magistrate Court";why.push("A cheque dishonour complaint under Section 138 of the Negotiable Instruments Act, 1881 goes to the Magistrate. Under Section 142(2) the court where the payee holds the account has jurisdiction.")}
+else if(has(/oppression|mismanagement|insolvency|winding up|nclt/)){c="Tribunal";why.push("Company law and insolvency matters go to the National Company Law Tribunal.")}
+else if(has(/industrial dispute|wrongful termination|workman/)){c="Tribunal";why.push("Industrial disputes go to the Labour Court or Industrial Tribunal.")}
+else if(ft==="Bail Application"&&has(/murder|rape|dowry death|culpable homicide/)){c="Sessions Court";why.push("Offences triable by the Court of Session need bail from the Sessions Court or the High Court.")}
+else if(ft==="Bail Application"||ft==="Complaint"){c="Magistrate Court";why.push("Complaints and bail for offences triable by a Magistrate go to the Magistrate.")}
+else if(ft==="Appeal"||ft==="Revision Petition"){c="Additional District Court";why.push("The appellate court depends on the court that passed the order. An appeal from a Munsif or Sub-Court decree usually goes to the District Court, and from a District Court decree to the High Court. Select the court by the order appealed against.")}
+else{var j=parseFloat($("lim1").value)||0,k=parseFloat($("lim2").value)||0;
+if(v&&j&&v<=j)c="Munsif / Civil Judge (Junior Division)";else if(v&&k&&v<=k)c="Sub-Court / Civil Judge (Senior Division)";else if(v&&j&&k)c="Principal District Court";else{c="Sub-Court / Civil Judge (Senior Division)";note=" Enter the claim value and your State\u2019s court limits in section 2 for a firmer suggestion."}
+why.push("For a civil suit the court depends on the claim value and the State\u2019s pecuniary limits, which differ from State to State."+note)}
+if(has(/property|land|plot|house|partition|possession|gift deed|sale deed|settlement deed|eviction/))why.push("For immovable property the suit lies where the property is situated (Section 16, Code of Civil Procedure).");else why.push("Otherwise the suit lies where the defendant lives or works for gain, or where the cause of action arose (Sections 19 and 20, Code of Civil Procedure).");
+if(has(/tenant|landlord|rent control/))why.push("Rent and eviction cases may lie before the Rent Controller or Small Causes Court under the State rent law. Check the State Act.");
+SUG=why.join(" ");
+$("sug").innerHTML="<b>Suggested court: "+esc(c)+"</b><br>"+why.map(esc).join("<br>")+"<br><i>This is a pointer from keywords in your text and your entries, not a legal opinion. Confirm the State limits, the statute and the territorial limits before filing.</i><br>";
+$("sug").append(mk("button",{textContent:"Use this court",onclick:function(){$("court").value=c;if(!$("jur").value.trim())$("jur").value=SUG;save();style();gen()}}))};
+
+var STATES=["Andhra Pradesh","Arunachal Pradesh","Assam","Bihar","Chhattisgarh","Goa","Gujarat","Haryana","Himachal Pradesh","Jharkhand","Karnataka","Kerala","Madhya Pradesh","Maharashtra","Manipur","Meghalaya","Mizoram","Nagaland","Odisha","Punjab","Rajasthan","Sikkim","Tamil Nadu","Telangana","Tripura","Uttar Pradesh","Uttarakhand","West Bengal","Andaman and Nicobar Islands","Chandigarh","Dadra and Nagar Haveli and Daman and Diu","Delhi","Jammu and Kashmir","Ladakh","Lakshadweep","Puducherry"];
+STATES.forEach(function(x){$("state").append(mk("option",{textContent:x}))});
+var RULES={"Tamil Nadu":["Court fee: Tamil Nadu Court-Fees and Suits Valuation Act, 1955.","Rent: Tamil Nadu Buildings (Lease and Rent Control) Act, 1960 and the Tamil Nadu Regulation of Rights and Responsibilities of Landlords and Tenants Act, 2017.","Civil courts: Madras Civil Courts Act, 1873.","Advocates welfare stamp: Tamil Nadu Advocates Welfare Fund Act, 1987.","Language: Tamil may be used in subordinate courts. High Court proceedings are in English."],
+"Karnataka":["Court fee: Karnataka Court Fees and Suits Valuation Act, 1958.","Rent: Karnataka Rent Act, 1999.","Civil courts: Karnataka Civil Courts Act, 1964.","Advocates welfare stamp: Karnataka Advocates Welfare Fund Act, 1983.","Language: Kannada in subordinate courts."],
+"Kerala":["Court fee: Kerala Court Fees and Suits Valuation Act, 1959.","Rent: Kerala Buildings (Lease and Rent Control) Act, 1965.","Civil courts: Kerala Civil Courts Act, 1957.","Advocates welfare stamp: Kerala Advocates\u2019 Welfare Fund Act, 1980.","Language: Malayalam in subordinate courts."],
+"Maharashtra":["Court fee: Maharashtra Court Fees Act, 1959.","Rent: Maharashtra Rent Control Act, 1999.","Civil courts: Bombay Civil Courts Act, 1869.","Stamp duty: Maharashtra Stamp Act, 1958.","Language: Marathi in subordinate courts."],
+"West Bengal":["Court fee: West Bengal Court-Fees Act, 1970.","Rent: West Bengal Premises Tenancy Act, 1997.","Civil courts: Bengal, Agra and Assam Civil Courts Act, 1887."],
+"Uttar Pradesh":["Court fee: Court-fees Act, 1870 as amended in Uttar Pradesh.","Rent: Uttar Pradesh Urban Buildings (Regulation of Letting, Rent and Eviction) Act, 1972.","Civil courts: Bengal, Agra and Assam Civil Courts Act, 1887.","Language: Hindi in subordinate courts."],
+"Delhi":["Court fee: Court Fees Act, 1870 as applicable to Delhi.","Rent: Delhi Rent Control Act, 1958.","The Delhi High Court has original civil jurisdiction above a pecuniary limit fixed under the Delhi High Court Act, 1966. Check the current limit."],
+"Telangana":["Court fee: Andhra Pradesh Court Fees and Suits Valuation Act, 1956, as adopted by Telangana.","Rent: Telangana Buildings (Lease, Rent and Eviction) Control Act, 1960."],
+"Andhra Pradesh":["Court fee: Andhra Pradesh Court Fees and Suits Valuation Act, 1956.","Rent: Andhra Pradesh Buildings (Lease, Rent and Eviction) Control Act, 1960."]};
+var UNI=["Check the State Court Fees Act and pay court fee on the correct valuation.","Stamp duty: check the Indian Stamp Act, 1899 as amended by the State for every document and affidavit.","Check each civil court\u2019s pecuniary limit under the State Civil Courts Act.","Check the High Court rules on paper, margins, font size, e-filing and writ procedure.","The Limitation Act, 1963 applies in every State. Work out the last date and file in time, or seek condonation of delay.","Affix any State advocates welfare stamp and court-fee stamp that the vakalat requires.","Use the language that the court permits.","File certified copies of the impugned orders and list all documents with the strongest proof first.","Reserve a caveat under Section 148-A CPC where an adverse application is expected.","State every material fact and law truthfully. Courts refuse relief to a party who hides facts."];
+var STN={},SV={};
+try{var X=JSON.parse(localStorage.getItem("dil2")||"{}");if(X.c)COURTS.splice(0,COURTS.length,...X.c);if(X.f)FT.splice(0,FT.length,...X.f);if(X.p)PH.splice(0,PH.length,...X.p);if(X.n)FONTS.splice(0,FONTS.length,...X.n);if(X.s)STN=X.s;if(X.u)UNI.splice(0,UNI.length,...X.u)}catch(e){}
+function sv(){try{localStorage.setItem("dil2",JSON.stringify({c:COURTS,f:FT,p:PH,n:FONTS,s:STN,u:UNI}))}catch(e){}}
+function mg(sid,arr,idx){var box=mk("div",{className:"note",style:"display:none;margin:6px 0"}),b=mk("button",{textContent:"Add or remove options",style:"margin-top:4px"});
+function paint(){var cur=$(sid).value;$(sid).innerHTML="";arr.forEach(function(a,i){$(sid).append(mk("option",{textContent:idx?a.slice(0,58)+"\u2026":a,value:idx?i:a}))});if(!idx&&arr.indexOf(cur)>-1)$(sid).value=cur;box.innerHTML="";arr.forEach(function(a,i){var r=mk("div",{className:"item"});r.append(mk("span",{textContent:a,style:"flex:1"}),mk("button",{textContent:"\u00d7",title:"Remove",onclick:function(){arr.splice(i,1);paint();sv()}}));box.append(r)});var r=mk("div",{className:"item"}),inp=mk("input",{placeholder:"New option"});r.append(inp,mk("button",{textContent:"Add",onclick:function(){if(inp.value.trim()){arr.push(inp.value.trim());paint();sv()}}}));box.append(r)}
+b.onclick=function(){box.style.display=box.style.display==="none"?"block":"none"};$(sid).after(b,box);paint()}
+mg("court",COURTS);mg("ftype",FT);mg("font",FONTS);mg("ph",PH,true);
+function sr(){var st=$("state").value,h=$("strules");h.innerHTML="";if(!st){h.textContent="Select the State first. Its rules and a preparation checklist will appear here.";return}
+STN[st]=STN[st]||(RULES[st]||[]).slice();
+function sec(t,arr){h.append(mk("b",{textContent:t}));arr.forEach(function(a,i){var r=mk("div",{className:"item",style:"align-items:flex-start"});r.append(mk("span",{textContent:"\u2022 "+a,style:"flex:1"}),mk("button",{textContent:"\u00d7",title:"Remove",onclick:function(){arr.splice(i,1);sv();sr()}}));h.append(r)});var r=mk("div",{className:"item"}),inp=mk("input",{placeholder:"Add a line"});r.append(inp,mk("button",{textContent:"Add",onclick:function(){if(inp.value.trim()){arr.push(inp.value.trim());sv();sr()}}}));h.append(r)}
+sec("Rules for "+st+(RULES[st]?" (verify against the current Act and amendments)":" (none built in yet: add its Court Fees Act, rent law, civil courts act and High Court rules)"),STN[st]);
+sec("Make sure of these in every State",UNI);
+h.append(mk("button",{textContent:"Show State checklist on page",onclick:function(){var L=function(a){return a.map(function(x){return "<p>\u2022 "+esc(x)+"</p>"}).join("")};$("sheet").innerHTML="<h3>STATE CHECKLIST \u2013 "+esc(st.toUpperCase())+"</h3><p><b>Rules to check</b></p>"+L(STN[st])+"<p><b>Make sure of these</b></p>"+L(UNI)+"<p><i>Verify every rule against the current Act, rules and High Court notifications before filing.</i></p><p class='r'>"+advBlock()+"</p>";style()}}))}
+$("state").addEventListener("change",sr);
+
+var AG=[
+["Rental Agreement","வாடகை ஒப்பந்தம்","किराया समझौता",["The First Party lets and the Second Party takes on rent the premises described as {sub} for a term of {term}.","The rent is {amt} per month, payable in advance on or before the ____ day of each month.","The Second Party has paid Rs. ______ as refundable security deposit, to be returned without interest on vacating, after deducting lawful dues.","The Second Party shall use the premises only for ______, shall not sub-let or assign them, and shall keep them in good condition.","Either party may end this agreement by ____ months\u2019 written notice. Rent shall increase by ___ % after every ____ months."]],
+["Leave and Licence Agreement","உரிம ஒப்பந்தம் (குடியிருப்பு)","लीव एंड लाइसेंस करार",["The First Party (Licensor) permits the Second Party (Licensee) to occupy {sub} for {term} on leave and licence, without creating any tenancy or interest in the property.","The licence fee is {amt} per month, with refundable deposit of Rs. ______.","The Licensee shall not sub-licence, shall use the premises only for ______, and shall vacate on expiry or termination."]],
+["Lease Deed","குத்தகைப் பத்திரம்","पट्टा विलेख",["The First Party (Lessor) leases the property {sub} to the Second Party (Lessee) for {term}.","The rent is {amt}, payable as ______, with premium or deposit of Rs. ______.","The Lessee shall pay agreed taxes and charges and shall not sub-lease without the Lessor\u2019s written consent.","On expiry the Lessee shall hand over vacant possession."]],
+["Sale Deed","கிரயப் பத்திரம்","बिक्री विलेख",["The First Party (Vendor) sells, conveys and transfers to the Second Party (Purchaser) the property described as {sub} for a total consideration of {amt}, receipt of which the Vendor acknowledges.","The Vendor declares absolute right and title, and that the property is free from encumbrance, mortgage, charge, litigation and claim.","Possession is delivered to the Purchaser on the date of this deed.","The Vendor shall pay all taxes and dues up to the date of this deed and shall sign any further document needed to perfect the Purchaser\u2019s title."]],
+["Agreement to Sell","விற்பனை ஒப்பந்தம்","बिक्री का करार",["The First Party agrees to sell and the Second Party agrees to buy the property {sub} for {amt}.","The Second Party has paid Rs. ______ as advance. The balance shall be paid at registration of the sale deed, within {term}.","The First Party shall give a clear and marketable title and obtain any permission that the law requires.","If either party defaults, the other may enforce this agreement or claim the remedies agreed here: ______."]],
+["Gift Deed","தானப் பத்திரம்","दान विलेख",["The First Party (Donor), out of natural love and affection, gifts to the Second Party (Donee) the property {sub}, without consideration.","The Donee accepts the gift, and possession is delivered on the date of this deed.","The Donor declares absolute title and that the property is free from encumbrance.","[Optional] The gift is made on the condition that the Donee shall provide the Donor with basic amenities and basic physical needs for life. If the Donee fails, the gift may be declared void under Section 23 of the Maintenance and Welfare of Parents and Senior Citizens Act, 2007."]],
+["Settlement Deed","செட்டில்மெண்ட் பத்திரம்","समझौता विलेख",["The parties are members of one family and settle the property {sub} among themselves as follows: ______.","The settlement is made voluntarily, for family peace, after full disclosure of facts.","Each party accepts the share allotted and gives up all other claims over the property."]],
+["Partition Deed","பாகப்பிரிவினைப் பத்திரம்","बँटवारा विलेख",["The parties are co-owners of the property {sub} and have agreed to divide it by metes and bounds as in the schedules.","Each party shall hold and enjoy the allotted share exclusively, free from the claims of the others.","Common ways, drains and utilities shall remain available to all parties.","Stamp duty and registration charges shall be borne in the proportion ______."]],
+["Mortgage Deed","அடமானப் பத்திரம்","बंधक विलेख",["The First Party (Mortgagor) mortgages the property {sub} to the Second Party (Mortgagee) as security for a loan of {amt}.","Interest is ___ % per annum, and the loan is repayable within {term}.","The Mortgagor declares clear title and shall not sell or encumber the property until the loan is repaid.","On full repayment the Mortgagee shall release the property and return the title deeds."]],
+["Release Deed","விடுதலைப் பத்திரம்","त्याग / रिलीज़ डीड",["The First Party (Releasor) releases all rights, title and interest in the property {sub} in favour of the Second Party (Releasee) for {amt}.","The Releasor has no further claim and confirms that the release is voluntary."]],
+["Power of Attorney","அதிகாரப் பத்திரம்","मुख्तारनामा",["The First Party (Principal) appoints the Second Party (Agent) as attorney to act for the Principal in {sub}.","The Agent may sign, file and present documents, appear before authorities and receive money, within the powers stated here only.","The Principal ratifies all lawful acts of the Agent under this deed.","This power continues for {term} unless the Principal revokes it earlier in writing."]],
+["Partnership Deed","கூட்டாண்மைப் பத்திரம்","साझेदारी विलेख",["The parties agree to carry on business in partnership under the name ______ at {sub}.","Total capital is {amt}, contributed in the proportion ______.","Profits and losses shall be shared in the ratio ______. The partnership shall continue for {term}.","Books of account shall be kept at the place of business and be open to all partners. The bank account shall be operated by ______."]],
+["Employment Agreement","வேலைவாய்ப்பு ஒப்பந்தம்","रोजगार अनुबंध",["The First Party (Employer) appoints the Second Party (Employee) as ______ in {sub}.","Remuneration is {amt} per month, less statutory deductions. Probation is ____ months. The term is {term}.","The Employee shall keep all confidential information secret during and after employment.","Either party may end this agreement by ____ notice in writing."]],
+["Service Agreement","சேவை ஒப்பந்தம்","सेवा अनुबंध",["The Second Party (Service Provider) shall provide {sub} to the First Party (Client).","The fee is {amt}, payable as ______. The term is {term}.","The Service Provider shall act with reasonable skill and care and obey all applicable laws.","Neither party is liable for delay caused by events beyond its reasonable control."]],
+["Consultancy Agreement","ஆலோசனை ஒப்பந்தம்","परामर्श अनुबंध",["The Second Party (Consultant) shall advise the First Party (Client) on {sub}.","The fee is {amt}, payable as ______. The term is {term}.","The Consultant is an independent contractor and shall keep client information confidential."]],
+["Loan Agreement","கடன் ஒப்பந்தம்","ऋण अनुबंध",["The First Party (Lender) lends {amt} to the Second Party (Borrower) for {sub}.","Interest is ___ % per annum. Repayment shall be within {term} as ______.","The Borrower acknowledges receipt of the money by ______.","On default the Lender may recover the amount, interest and costs by legal proceedings."]],
+["Non-Disclosure Agreement","ரகசியக் காப்பு ஒப்பந்தம்","गोपनीयता समझौता",["The parties will share confidential information for the purpose of {sub}.","The receiving party shall keep it secret, use it only for that purpose and disclose it only to persons who need it and are bound to secrecy.","This duty continues for {term} from the date of this agreement.","On request, all confidential information shall be returned or destroyed."]],
+["Memorandum of Understanding","புரிந்துணர்வு ஒப்பந்தம்","समझौता ज्ञापन",["The parties record their understanding to cooperate in {sub}.","This memorandum states intent. Binding obligations arise only from separate definitive agreements, except confidentiality and governing law.","It remains valid for {term}."]],
+["Agency Agreement","முகவர் ஒப்பந்தம்","एजेंसी अनुबंध",["The First Party (Principal) appoints the Second Party (Agent) to act in {sub}.","The commission is {amt}.","The Agent shall act in good faith, account for all money received and not exceed the authority given.","The term is {term}, ended by written notice."]],
+["Franchise Agreement","ஃபிரான்சைஸ் ஒப்பந்தம்","फ्रेंचाइज़ी समझौता",["The First Party (Franchisor) grants the Second Party (Franchisee) the right to operate the business under the brand in {sub}.","The franchise fee is {amt}, royalty ___ %, term {term}.","The Franchisee shall follow brand standards and shall not use the brand outside the territory.","On termination the Franchisee shall stop using the brand."]],
+["Licence Agreement","உரிம ஒப்பந்தம்","लाइसेंस समझौता",["The First Party (Licensor) grants the Second Party (Licensee) a non-exclusive licence to use {sub}.","The fee is {amt} and the term is {term}.","The Licensee shall not sub-license, copy or transfer the licensed rights. Ownership remains with the Licensor."]],
+["Construction and Development Agreement","கட்டுமான மற்றும் மேம்பாட்டு ஒப்பந்தம்","निर्माण एवं विकास अनुबंध",["The First Party (Owner) engages the Second Party (Developer) to develop the land {sub}.","The consideration is {amt}, or area share ______.","The Developer shall complete the work within {term}, obtain all approvals and comply with the law, including the Real Estate (Regulation and Development) Act, 2016 where applicable.","Delay shall carry the liability agreed here: ______."]],
+["Compromise Agreement","சமரச ஒப்பந்தம்","समझौता करार",["The parties settle their dispute regarding {sub} on these terms: ______.","The paying party shall pay {amt} within {term}.","Both parties shall withdraw all claims and shall file the compromise before the court under Order XXIII Rule 3 of the Code of Civil Procedure, 1908, where a suit is pending."]],
+["Shareholders Agreement","பங்குதாரர் ஒப்பந்தம்","शेयरधारक समझौता",["The parties agree how the company {sub} shall be governed.","The capital subscribed is {amt}, and the shareholding is ______.","Board composition, reserved matters, transfer restrictions and exit shall be as follows: ______.","The agreement continues for {term}."]]];
+var AGN=AG.map(function(x){return x[0]});
+try{var Y=JSON.parse(localStorage.getItem("dil3")||"null");if(Y)AGN.splice(0,AGN.length,...Y)}catch(e){}
+$("atype").append(mk("option",{textContent:AGN[0]}));
+var _sv=sv;sv=function(){_sv();try{localStorage.setItem("dil3",JSON.stringify(AGN))}catch(e){}};
+mg("atype",AGN);
+var COM=["This agreement is governed by the laws of India.","The courts at {pl} alone shall have jurisdiction, subject to the arbitration clause below.","Disputes shall first be settled by mutual discussion. If not settled within 30 days, they shall be referred to arbitration under the Arbitration and Conciliation Act, 1996 before a sole arbitrator appointed by mutual consent, with the seat at {pl}.","Any change to this agreement must be in writing and signed by both parties.","If any clause is held invalid, the other clauses remain in force.","Stamp duty and registration charges shall be borne by ______."];
+function ag(){var n=$("atype").value,e=AG.filter(function(x){return x[0]===n})[0]||[n,"","",["The parties agree to the following terms regarding {sub}."]],lang=$("lang").value,t=(lang==="Tamil"&&e[1])||(lang==="Hindi"&&e[2])||"";
+var V={sub:$("asub").value.trim()||"__________",amt:$("aamt").value.trim()?"Rs. "+$("aamt").value.trim():"Rs. __________",term:$("aterm").value.trim()||"__________",pl:$("place").value.trim()||"__________"};
+var f=function(x){return x.replace(/\{(sub|amt|term|pl)\}/g,function(m,k){return V[k]})};
+var P=function(id){return esc($(id).value.trim()).replace(/\n/g,"<br>")||"__________"};
+var h="<h3>"+(t?esc(t)+" ("+esc(n.toUpperCase())+")":esc(n.toUpperCase()))+"</h3>";
+h+="<p>This "+esc(n)+" is made at "+esc(V.pl)+" on "+esc($("adate").value.trim()||new Date().toLocaleDateString("en-GB"))+" between:</p><p>(1) "+P("ap1")+" (the \u201cFirst Party\u201d)</p><p class='c'>and</p><p>(2) "+P("ap2")+" (the \u201cSecond Party\u201d).</p><p>The expressions First Party and Second Party include their heirs, legal representatives, successors and assigns.</p><p><b>NOW THIS AGREEMENT WITNESSETH AS FOLLOWS:</b></p>";
+e[3].concat(ADV(),pcl(),BEN(),COM).forEach(function(x,i){h+="<p>"+(i+1)+". "+esc(f(x))+"</p>"});
+h+="<p>IN WITNESS WHEREOF the parties have signed this agreement on the date first written above.</p>"+sg();
+h+=nt(n);
+$("sheet").innerHTML=h;style()}
+$("agr").onclick=$("agr2").onclick=ag;
+
+var PC=[["Not applicable",[]],["Apartment / Flat",["Property class: apartment or flat in a building with common areas.","The Second Party shall pay the monthly maintenance charges, sinking fund, water and electricity charges of Rs. ______ to the apartment owners\u2019 association or the First Party, as agreed.","The Second Party shall obey the by-laws and parking rules of the association and shall not obstruct common areas, lifts or staircases.","Car parking slot no. ______ is included. No alteration shall be made to the structure, balcony or elevation."]],["Individual House",["Property class: independent house with its own compound.","The Second Party shall keep the compound, garden, water tank and borewell in good order and shall pay all electricity, water and other charges for the period of occupation.","Structural repairs and repairs to the roof and walls shall be done by the First Party, and minor day-to-day repairs by the Second Party.","No construction or alteration shall be made without the First Party\u2019s written consent."]],["Commercial Premises",["Property class: commercial premises.","The premises shall be used only for the business of ______. The Second Party shall hold all licences needed and shall pay GST on the rent where it applies.","The Second Party shall follow fire-safety and local authority rules."]],["Vacant Land / Plot",["Property class: vacant land or plot.","The boundaries and extent are as in the schedule. No construction shall be made without the First Party\u2019s consent and the approvals the law requires."]],["Agricultural Land",["Property class: agricultural land.","The transfer, lease or use of agricultural land is restricted by the land laws of the State, including ceiling and tenancy laws. The parties have checked that this transaction is permitted.","The parties do not intend to create any tenancy right, subject to State law, and the land shall be returned on expiry."]]];
+PC.forEach(function(x){$("aprop").append(mk("option",{textContent:x[0]}))});
+function pcl(){var c=PC.filter(function(x){return x[0]===$("aprop").value})[0];return c?c[1]:[]}
+var STL={"Karnataka":"Karnataka Stamp Act, 1957","Maharashtra":"Maharashtra Stamp Act, 1958","Rajasthan":"Rajasthan Stamp Act, 1998","Gujarat":"Bombay Stamp Act, 1958, as applied in Gujarat"};
+function rg(n){var R=[[/Rental|Leave and Licence/,"A lease of immovable property for one year or less need not be registered. A lease for more than one year, or from year to year, must be registered (Section 107, Transfer of Property Act, 1882; Section 17(1)(d), Registration Act, 1908). Leave and licence is not a lease, so check the State law on its stamp duty and registration. A month-to-month tenancy ends by 15 days\u2019 notice (Section 106, Transfer of Property Act) unless the State rent law differs."],[/Lease Deed/,"A lease for more than one year must be registered (Section 107, Transfer of Property Act; Section 17(1)(d), Registration Act)."],[/Sale Deed/,"Registration is compulsory (Section 54, Transfer of Property Act, for value of Rs. 100 or more; Section 17(1)(b), Registration Act)."],[/Agreement to Sell/,"Not compulsorily registrable by itself, but if possession is given in part performance (Section 53A, Transfer of Property Act) it must be registered (Section 17(1A), Registration Act). Some States charge stamp duty as on a conveyance."],[/Gift Deed/,"Registration is compulsory for immovable property (Section 123, Transfer of Property Act; Section 17(1)(a), Registration Act). The donee must accept in the donor\u2019s lifetime."],[/Settlement|Partition|Release/,"Registration is compulsory when the document creates, declares, assigns or ends a right in immovable property of Rs. 100 or more (Section 17(1)(b) and (c), Registration Act). Take advice on oral partitions and recorded family arrangements."],[/Mortgage/,"A mortgage for Rs. 100 or more must be by registered deed (Section 59, Transfer of Property Act), except a mortgage by deposit of title deeds (Section 58(f))."],[/Power of Attorney/,"Registration is not compulsory under the Registration Act, but authentication under Section 33 is needed to present documents, and the State may require registration for a power to sell immovable property. Check the State rule."],[/Partnership/,"The deed need not be registered, but an unregistered firm cannot sue to enforce contract rights (Section 69, Indian Partnership Act, 1932). Register the firm with the Registrar of Firms (Section 58)."],[/Construction and Development/,"It must be registered where it transfers an interest in immovable property (Section 17(1)(b), Registration Act). A real estate project may need registration under Section 3, Real Estate (Regulation and Development) Act, 2016."],[/Compromise/,"A compromise outside court that creates or ends rights in immovable property needs registration (Section 17(1)(b)). A court decree on compromise under Order XXIII Rule 3 CPC is exempt (Section 17(2)(vi))."]];
+var m=R.filter(function(x){return x[0].test(n)})[0];return m?m[1]:"Registration is not compulsory under Section 17, Registration Act, 1908. Stamp duty is still payable, and an unstamped document is not admissible in evidence (Section 35, Indian Stamp Act, 1899)."}
+function nt(n){var st=$("state").value||"the State";return "<p><i>Note to advocate (delete before printing).<br><b>Property class:</b> "+esc($("aprop").value)+".<br><b>Registration:</b> "+esc(rg(n))+"<br><b>Place of registration:</b> for a document affecting immovable property, the office of the Sub-Registrar in whose sub-district the property, or part of it, is situated (Section 28, Registration Act, 1908), wherever the owner or parties live. Property and office noted: "+esc($("asr").value||"not entered")+". Present the document within four months of execution (Section 23); late presentation attracts a fine (Section 25). The parties and two witnesses appear with identity proof. Registration fee is under the State schedule (Section 78). An unregistered document that needs registration is not admissible to prove title (Section 49).<br><b>Stamp duty:</b> "+esc(STL[st]||"Indian Stamp Act, 1899, as amended for "+st)+". An insufficiently stamped document is not admissible in evidence (Section 35, Indian Stamp Act, 1899). Check the current State schedule and any concession.<br>"+advn()+"<b>Adverse possession:</b> a tenant or licensee holds with the owner\u2019s permission, so adverse possession generally cannot arise (Article 65, Limitation Act, 1963 allows 12 years for a possession claim based on title), but record the permission in writing. Annex a signed inventory with dated photographs at handover and compare them on return.<br><b>Aadhaar:</b> take the beneficiary\u2019s consent, keep a masked copy and use it only for this agreement. A private party cannot compel Aadhaar authentication (the Supreme Court restricted this in 2018), so accept PAN, passport or voter ID as alternatives if the person prefers. Keep the PAN and bank details only as needed.<br>Verify every rule against the current Act and State notification. Check that each signatory has authority.</i></p>"}
+function tick(){var d=new Date();$("clk").innerHTML=d.toLocaleDateString("en-GB",{day:"2-digit",month:"short",year:"numeric"})+"<br>"+d.toLocaleTimeString("en-GB")}
+tick();setInterval(tick,1000);
+var _st=style;style=function(){_st();var d=new Date().toLocaleString("en-GB");$("pg").textContent+=hfCss();pvr();wsync()};
+window.addEventListener("beforeprint",function(){style()});
+function lum(h){var n=parseInt(h.slice(1),16);return (0.299*(n>>16)+0.587*((n>>8)&255)+0.114*(n&255))/255}
+function ap(a,b,pn,x){var r=document.documentElement.style;["--acc","--bg","--panel","--ink","--mute","--line","--accfg"].forEach(function(k){r.removeProperty(k)});if(!a)return;r.setProperty("--acc",a);r.setProperty("--bg",b);r.setProperty("--panel",pn);r.setProperty("--accfg",lum(a)>0.55?"#10151f":"#ffffff");if(lum(b)<0.4){var X=x||{};r.setProperty("--ink",X.i||"#e6ebf3");r.setProperty("--mute",X.m||"#9aa6b8");r.setProperty("--line",X.l||"#33405a")}}
+var TH={"Default":null,"Ocean":["#1d5c7a","#e8f1f6","#ffffff"],"Forest":["#2f6b3f","#edf4ee","#ffffff"],"Maroon":["#7a1f2b","#f6eeee","#ffffff"],"Saffron":["#b45309","#fbf3e6","#ffffff"],"Night blue":["#6aa3d9","#0f1722","#1a2433"],"Charcoal":["#d9a441","#121212","#1e1e1e",{i:"#eeeeee",m:"#a0a0a0",l:"#3a3a3a"}]};
+Object.keys(TH).forEach(function(k){$("thm").append(mk("option",{textContent:k}))});
+function thsave(){try{localStorage.setItem("dil4",JSON.stringify({n:$("thm").value,a:$("cacc").value,b:$("cbg").value,p:$("cpn").value}))}catch(e){}}
+$("thm").onchange=function(){var t=TH[$("thm").value];ap.apply(null,t||[]);if(t){$("cacc").value=t[0];$("cbg").value=t[1];$("cpn").value=t[2]}thsave()};
+["cacc","cbg","cpn"].forEach(function(i){$(i).oninput=function(){ap($("cacc").value,$("cbg").value,$("cpn").value);$("thm").value="Default";thsave()}});
+try{var Z=JSON.parse(localStorage.getItem("dil4")||"null");if(Z){if(Z.n!=="Default"||Z.a!=="#1d5c7a"){$("cacc").value=Z.a;$("cbg").value=Z.b;$("cpn").value=Z.p;if(TH[Z.n]){$("thm").value=Z.n;ap.apply(null,TH[Z.n])}else if(Z.n==="Default"&&(Z.a!=="#1d5c7a"||Z.b!=="#eef1f5"||Z.p!=="#ffffff"))ap(Z.a,Z.b,Z.p)}}}catch(e){}
+var LP=null,LG=[];try{LP=JSON.parse(localStorage.getItem("dilp")||"null");LG=JSON.parse(localStorage.getItem("dill")||"[]")}catch(e){}
+function hs(t){var e=new TextEncoder().encode(t);return (window.crypto&&crypto.subtle)?crypto.subtle.digest("SHA-256",e).then(function(b){return Array.from(new Uint8Array(b)).map(function(x){return x.toString(16).padStart(2,"0")}).join("")}):Promise.resolve(btoa(unescape(encodeURIComponent(t))))}
+function lgs(){$("slog").innerHTML=LG.length?"<b>Access log (this browser only)</b><br>"+LG.slice(0,8).map(function(x){return esc(x.t+" \u2013 "+x.k)}).join("<br>"):"No access events recorded yet.";try{localStorage.setItem("dill",JSON.stringify(LG.slice(0,50)))}catch(e){}}
+function logev(k){LG.unshift({t:new Date().toLocaleString("en-GB"),k:k});lgs()}
+function lock(){if(!LP){$("slog").innerHTML="Set a passcode first.";return}$("lk").style.display="flex";$("lkp").value="";$("lkp").focus()}
+$("lku").onclick=function(){hs(LP.s+$("lkp").value).then(function(h){if(h===LP.h){$("lk").style.display="none";$("lkm").textContent="";logev("Unlocked")}else{$("lkm").textContent="Wrong passcode.";logev("Failed unlock attempt")}})};
+$("lkp").addEventListener("keydown",function(e){if(e.key==="Enter")$("lku").onclick()});
+$("spset").onclick=function(){var v=$("spw").value;if(v.length<6){$("slog").innerHTML="Use 6 or more characters.";return}var sl=String(Math.random()).slice(2)+Date.now();hs(sl+v).then(function(h){LP={s:sl,h:h};try{localStorage.setItem("dilp",JSON.stringify(LP))}catch(e){}$("spw").value="";logev("Passcode set")})};
+$("splock").onclick=lock;
+$("spoff").onclick=function(){if(!LP)return;hs(LP.s+$("spw").value).then(function(h){if(h===LP.h){LP=null;try{localStorage.removeItem("dilp")}catch(e){}$("spw").value="";logev("Passcode removed")}else{$("slog").innerHTML="Enter the current passcode in the box first.";logev("Failed passcode removal")}})};
+$("sclear").onclick=function(){if(confirm("Delete all saved cases, lists and settings from this browser?")){try{["dil1","dil2","dil3","dil4","dil5","dill"].forEach(function(k){localStorage.removeItem(k)})}catch(e){}location.reload()}};
+var IT=null;function idle(){clearTimeout(IT);var m=parseFloat($("sidle").value)||0;if(m>0&&LP)IT=setTimeout(lock,m*60000)}
+["mousemove","keydown","click","touchstart"].forEach(function(ev){document.addEventListener(ev,idle,true)});
+
+var APT={"Tamil Nadu":"the Tamil Nadu Apartment Ownership Act, 1994","Karnataka":"the Karnataka Apartment Ownership Act, 1972","Maharashtra":"the Maharashtra Apartment Ownership Act, 1970","Kerala":"the Kerala Apartment Ownership Act, 1983"};
+function dg(v){return String(v||"").replace(/\D/g,"")}
+function mAad(){var d=dg($("aad").value);if(!d)return "______";return $("amask").checked?"XXXX XXXX "+d.slice(-4):d.replace(/(\d{4})(?=\d)/g,"$1 ")}
+function mAcc(){var d=dg($("ban").value);if(!d)return "______";return $("amask").checked?"XXXXXXXX"+d.slice(-4):d}
+function BP(){return $("aben").value}
+function bnm(){return BP()==="First Party"?"ap1":"ap2"}
+function ids(){return "Aadhaar No. "+mAad()+"; PAN "+($("pan").value.trim().toUpperCase()||"______")+"; bank account in the name of "+($("bk").value.trim()||"______")+", account no. "+mAcc()+", IFSC "+($("ifsc").value.trim().toUpperCase()||"______")}
+function asn(){return $("aasn").value.trim()||"the apartment owners\u2019 association or society (where the property is in an apartment)"}
+function stl(){var st=$("state").value||"the State";return "the laws of "+st+" and the sections applicable, including the rent law, the stamp law and "+(APT[st]||"the apartment ownership or housing society law of the State")+", as amended from time to time"}
+function BEN(){var b=BP(),M=$("aperm").checked?["MAIN CLAUSE: The property is given to the "+b+" by mere permission, only to use for the beneficial purpose stated in this agreement, in return for the rent or fee given. It creates no ownership, title or interest in the property beyond the rights expressly given here. The First Party remains the sole owner, and the "+b+" holds the property only with the owner\u2019s permission and for the owner.","The "+b+" shall not claim ownership of the property, and shall not claim any right by adverse possession however long the possession continues. The "+b+" shall not set up any title against the owner, shall not allow anyone else to do so, and shall not sub-let or part with possession.","A signed inventory and dated photographs of the condition of the property at handover are annexed. The parties shall check the property against them on return."]:[];return M.concat(["The "+b+" (the beneficiary of the property) has given the following identity and payment details, with copies attached: "+ids()+".","The "+b+" has given, and annexes to this agreement, an affidavit undertaking to obey the rules, by-laws and decisions of "+asn()+" and "+stl()+".","For the whole time that the "+b+" holds, occupies or uses the property, the "+b+" shall use it only for the agreed purpose and shall do no illegal act in or in relation to the property.","The "+b+" shall not damage the property. In particular the "+b+" shall not nail, drill or fix anything into the walls, ceilings, floors or fittings, and shall make no structural change, without the other party\u2019s written consent.","If the property is damaged, the "+b+" shall pay compensation for the damage and the full cost of repair and renovation needed to restore the property to its condition at the start. That sum may be deducted from any deposit, and the balance is recoverable from the "+b+".","On leaving, or when this agreement ends, the "+b+" shall hand back the property to the owner in the same condition in which it was given, without any damage and with all fittings and keys, fair wear and tear excepted.","Every party, and every member named below, shall sign this agreement."])}
+function sg(){var r=function(l){return "<td>"+l+"<br><br><br>Signature</td>"},c=[r("First Party"),r("Second Party")];$("amem").value.split("\n").filter(function(x){return x.trim()}).forEach(function(m){c.push(r("Member: "+esc(m.trim())))});c.push("<td>Witness 1: Name, address, signature<br><br><br></td>","<td>Witness 2: Name, address, signature<br><br><br></td>");var h="<table>";for(var i=0;i<c.length;i+=2)h+="<tr>"+c[i]+(c[i+1]||"<td></td>")+"</tr>";return h+"</table>"}
+function af(){var b=BP(),nm=esc($(bnm()).value.trim()).replace(/\n/g,"<br>")||"__________",pl=esc($("place").value.trim()||"__________"),dt=esc($("adate").value.trim()||new Date().toLocaleDateString("en-GB"));
+var L=($("aperm").checked?["The property is given to me by mere permission, only to use for the beneficial purpose stated, in return for the rent or fee given. I shall not claim ownership of the property, or any right by adverse possession, however long my possession continues. The owner remains its sole owner."]:[]).concat(["I am the "+b+" (the beneficiary of the property) under the "+$("atype").value+" for the property described as: "+($("asub").value.trim()||"__________")+".","My identity and payment details are: "+ids()+". Copies of my identity documents are attached.","I shall obey the rules, by-laws and decisions of "+asn()+", and "+stl()+".","For the whole time that I hold, occupy or use the property, I shall use it only for the agreed purpose and shall do no illegal act in or in relation to the property.","I shall not damage the property. I shall not nail, drill or fix anything into the walls, ceilings, floors or fittings, and I shall make no structural change, without the owner\u2019s written consent.","If I damage the property, I shall pay compensation for the damage and the full cost of repair and renovation needed to restore it to its condition at the start. The owner may deduct this from my deposit, and I shall pay any balance.","On leaving I shall hand back the property in the same condition in which it was given, without any damage, fair wear and tear excepted.","What is stated above is true to my knowledge. Nothing material has been concealed."]);
+var h="<h3>AFFIDAVIT AND UNDERTAKING OF THE BENEFICIARY</h3><p>I, "+nm+", do hereby solemnly affirm and state on oath as follows:</p>"+L.map(function(x,i){return "<p>"+(i+1)+". "+esc(x)+"</p>"}).join("")+"<p class='r'>DEPONENT<br><br><br>Signature</p><p><b>VERIFICATION</b></p><p>Verified at "+pl+" on "+dt+" that the contents of this affidavit are true and correct to my knowledge, that no part of it is false, and that nothing material has been concealed.</p><p class='r'>DEPONENT<br><br><br>Signature</p><p><i>Note to advocate (delete before printing): execute on non-judicial stamp paper of the value the State requires, and have it sworn before a Notary Public or Oath Commissioner. Attach copies of the identity documents. Have every party and member sign the agreement as well.</i></p>";
+$("sheet").innerHTML=h;style()}
+$("aff").onclick=af;
+load();S.secs=S.secs||[];render();style();sr();gen();function pm(){$("aperm").checked=/Rental|Leave and Licence|Lease Deed|Licence Agreement/.test($("atype").value)}
+$("atype").addEventListener("change",pm);
+
+$("aadv").append(mk("option",{textContent:"No advance",value:"0"}));
+for(var mi=1;mi<=12;mi++)$("aadv").append(mk("option",{textContent:mi+(mi===1?" month":" months"),value:String(mi)}));
+function advT(){var n=parseInt($("aadv").value)||0,r=parseFloat(String($("aamt").value).replace(/[^0-9.]/g,""))||0;return {n:n,r:r,t:n*r}}
+function inr(x){return "Rs. "+x.toLocaleString("en-IN")}
+function ADV(){var a=advT(),o=[],pay=$("apay").value,d=parseFloat(String($("adep").value).replace(/[^0-9.]/g,""))||0;
+if(a.n>0){var tot=a.r?inr(a.t)+" ("+a.n+" \u00d7 "+inr(a.r)+")":"Rs. __________ ("+a.n+" \u00d7 the monthly rent)",adj=$("aadj").value,w=a.n+(a.n===1?" month":" months");
+o.push("The Second Party has paid, and the First Party acknowledges receipt of, advance rent for "+w+", being "+tot+", by "+pay+".");
+o.push(adj==="first"?"This advance shall be adjusted against the rent for the first "+a.n+(a.n===1?" month":" months")+" of the term, and the Second Party shall pay rent from the following month.":adj==="last"?"This advance shall be held by the First Party and adjusted against the rent for the last "+a.n+(a.n===1?" month":" months")+" of the term. The Second Party shall pay rent every month until then.":"This advance is refundable. It shall be held without interest, shall not be adjusted against rent unless both parties agree in writing, and shall be returned when the Second Party vacates, after deducting lawful dues.")}
+if(d>0)o.push("The Second Party has also paid Rs. "+d.toLocaleString("en-IN")+" as refundable security deposit, by "+pay+", to be returned without interest on vacating after deducting lawful dues.");
+return o}
+function advn(){var a=advT(),d=parseFloat(String($("adep").value).replace(/[^0-9.]/g,""))||0,w=($("apay").value==="cash"&&(a.t+d)>=200000)?" This payment is shown as cash and may reach that limit.":"";return "<b>Advance and deposit:</b> check any State limit on advance rent or deposit. The Model Tenancy Act, 2021 caps the security deposit, so check its limits and whether the State has adopted it. Pay by bank transfer, cheque or UPI where possible, because the income-tax law restricts cash receipts of Rs. 2 lakh or more."+w+" Issue a signed receipt for every payment.<br>"}
+
+function wd(n){var o=["","one","two","three","four","five","six","seven","eight","nine","ten","eleven","twelve","thirteen","fourteen","fifteen","sixteen","seventeen","eighteen","nineteen"],t=["","","twenty","thirty","forty","fifty","sixty","seventy","eighty","ninety"];function b(x){return x<20?o[x]:t[Math.floor(x/10)]+(x%10?" "+o[x%10]:"")}function c(x){return x>99?o[Math.floor(x/100)]+" hundred"+(x%100?" "+b(x%100):""):b(x)}n=Math.floor(n);if(!n)return "zero";var r=[];[[1e7,"crore"],[1e5,"lakh"],[1e3,"thousand"]].forEach(function(q){if(n>=q[0]){r.push(c(Math.floor(n/q[0]))+" "+q[1]);n%=q[0]}});if(n)r.push(c(n));return r.join(" ")}
+var RC=0,RL=[],RT="";
+try{var Q=JSON.parse(localStorage.getItem("dil5")||"null");if(Q){RC=Q.c||0;RL=Q.l||[]}}catch(e){}
+function rsv(){try{localStorage.setItem("dil5",JSON.stringify({c:RC,l:RL.slice(0,100)}))}catch(e){}}
+function rlg(){var h=$("rlog");h.innerHTML=RL.length?"<b>Receipts issued (this browser)</b>":"No receipts issued yet.";RL.slice(0,10).forEach(function(x,i){var r=mk("div",{className:"item"});r.append(mk("span",{textContent:x.no+" \u2013 "+x.nm+" \u2013 Rs. "+x.am+" \u2013 "+x.dt,style:"flex:1"}),mk("button",{textContent:"\u00d7",title:"Remove from the list",onclick:function(){RL.splice(i,1);rsv();rlg()}}));h.append(r)})}
+function rbuild(inc){var am=parseFloat(String($("ra").value).replace(/[^0-9.]/g,""))||0;if(!$("rn").value.trim()||!am){$("rlog").innerHTML="Enter the name and the amount first.";return null}
+var now=new Date(),dt=now.toLocaleString("en-GB"),no;if(inc){RC++;no="R-"+String(RC).padStart(4,"0")+"/"+now.getFullYear()}else no=RT.no||"R-____";
+var pr=$("rprop").value.trim()||$("asub").value.trim(),by=$("rby").value.trim()||"__________",per=$("rper").value.trim(),ref=$("rref").value.trim();
+var tx="Receipt No. "+no+". Received with thanks Rs. "+am.toLocaleString("en-IN")+" (Rupees "+wd(am)+" only) from "+$("rn").value.trim()+" towards "+$("rp").value+(per?" for "+per:"")+(pr?" for the property: "+pr:"")+". Mode: "+$("rmo").value+(ref?", ref. "+ref:"")+". Date and time: "+dt+". Received by: "+by+". Diligent in Law Advocate Thangarajus.";
+return {rp:$("rp").value,mo:$("rmo").value,no:no,tx:tx,am:am.toLocaleString("en-IN"),nm:$("rn").value.trim(),dt:dt,words:wd(am),pr:pr,by:by,per:per,ref:ref}}
+$("rgen").onclick=function(){var r=rbuild(true);if(!r)return;RT=r;RL.unshift({no:r.no,nm:r.nm,am:r.am,dt:r.dt});rsv();rlg();
+$("sheet").innerHTML="<h3>RECEIPT</h3><table><tr><td><b>Receipt No.</b> "+esc(r.no)+"</td><td><b>Date and time</b> "+esc(r.dt)+"</td></tr></table><p>Received with thanks <b>Rs. "+esc(r.am)+"</b> (Rupees "+esc(r.words)+" only) from <b>"+esc(r.nm)+"</b> towards "+esc($("rp").value)+(r.per?" for "+esc(r.per):"")+(r.pr?" for the property: "+esc(r.pr):"")+".</p><p>Mode of payment: "+esc($("rmo").value)+(r.ref?" \u2013 reference "+esc(r.ref):"")+"</p><p class='r'><br><br>Received by: "+esc(r.by)+"<br>Signature</p><p><i>This receipt is computer prepared and is valid with the signature of the person who received the payment.</i></p>";style()};
+function rneed(){return RT||(function(){var r=rbuild(true);if(r){RT=r;RL.unshift({no:r.no,nm:r.nm,am:r.am,dt:r.dt});rsv();rlg()}return r})()}
+function num(){var d=dg($("rm").value);if(d.length===10)d="91"+d;return d}
+$("rwa").onclick=function(){var r=rneed();if(!r)return;if(num().length<11){$("rlog").innerHTML="Enter a valid mobile number.";return}window.open("https://wa.me/"+num()+"?text="+encodeURIComponent(r.tx),"_blank","noopener")};
+$("rsms").onclick=function(){var r=rneed();if(!r)return;if(num().length<11){$("rlog").innerHTML="Enter a valid mobile number.";return}var ios=/iPhone|iPad|iPod/.test(navigator.userAgent);window.location.href="sms:+"+num()+(ios?"&":"?")+"body="+encodeURIComponent(r.tx)};
+$("rcp").onclick=function(){var r=rneed();if(!r)return;if(navigator.clipboard)navigator.clipboard.writeText(r.tx).then(function(){$("rlog").insertAdjacentText("afterbegin","Copied. ")},function(){$("rlog").insertAdjacentText("afterbegin","Could not copy. ")})};
+["rn","ra","rp","rper","rmo","rref","rprop","rby"].forEach(function(i){$(i).addEventListener("input",function(){RT=""})});
+
+function pe(t){return String(t).replace(/[^\x20-\x7e]/g,"?").replace(/([\\()])/g,"\\$1")}
+function wrp(t,n){var w=String(t).split(" "),L=[],c="";w.forEach(function(x){if((c+" "+x).trim().length>n){L.push(c);c=x}else c=(c+" "+x).trim()});if(c)L.push(c);return L}
+function pdfb(L){var y=790,c="BT\n";L.forEach(function(l){c+="/"+(l.b?"F2":"F1")+" "+l.s+" Tf 1 0 0 1 56 "+y+" Tm ("+pe(l.t)+") Tj\n";y-=l.s*1.7});c+="ET";
+var o=[];o[1]="<< /Type /Catalog /Pages 2 0 R >>";o[2]="<< /Type /Pages /Kids [3 0 R] /Count 1 >>";o[3]="<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 5 0 R /F2 6 0 R >> >> /Contents 4 0 R >>";o[4]="<< /Length "+c.length+" >>\nstream\n"+c+"\nendstream";o[5]="<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>";o[6]="<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold >>";
+var s="%PDF-1.4\n",off=[],i;for(i=1;i<=6;i++){off[i]=s.length;s+=i+" 0 obj\n"+o[i]+"\nendobj\n"}var x=s.length;s+="xref\n0 7\n0000000000 65535 f \n";for(i=1;i<=6;i++)s+=("0000000000"+off[i]).slice(-10)+" 00000 n \n";s+="trailer\n<< /Size 7 /Root 1 0 R >>\nstartxref\n"+x+"\n%%EOF";
+return new Uint8Array(Array.from(s).map(function(ch){return ch.charCodeAt(0)&255}))}
+function rfile(r){var L=[{t:"RECEIPT",s:20,b:1},{t:"Diligent in Law - Advocate Thangarajus",s:10},{t:"",s:10},{t:"Receipt No.: "+r.no,s:12,b:1},{t:"Date and time: "+r.dt,s:12},{t:"",s:10}];
+wrp("Received with thanks Rs. "+r.am+" (Rupees "+r.words+" only) from "+r.nm+" towards "+r.rp+(r.per?" for "+r.per:"")+(r.pr?" for the property: "+r.pr:"")+".",78).forEach(function(t){L.push({t:t,s:12})});
+L.push({t:"",s:10},{t:"Mode of payment: "+r.mo+(r.ref?" - reference "+r.ref:""),s:12},{t:"",s:12},{t:"",s:12},{t:"",s:12},{t:"Received by: "+r.by,s:12},{t:"Signature",s:12},{t:"",s:10});
+wrp("This receipt is computer prepared and is valid with the signature of the person who received the payment.",95).forEach(function(t){L.push({t:t,s:9})});
+return new File([pdfb(L)],r.no.replace(/[\/\\]/g,"-")+".pdf",{type:"application/pdf"})}
+$("rpdf").onclick=function(){var r=rneed();if(!r)return;var f=rfile(r),u=URL.createObjectURL(f),a=document.createElement("a");a.href=u;a.download=f.name;document.body.append(a);a.click();a.remove();setTimeout(function(){URL.revokeObjectURL(u)},4000);$("rlog").insertAdjacentText("afterbegin","PDF "+f.name+" saved to your downloads. ")};
+$("rshare").onclick=function(){var r=rneed();if(!r)return;var f=rfile(r);if(navigator.canShare&&navigator.canShare({files:[f]})){navigator.share({files:[f],title:r.no}).catch(function(){})}else{$("rlog").insertAdjacentText("afterbegin","This device cannot share a file directly. Use Download PDF, then attach it in WhatsApp. ")}};
+$("rmine").onclick=function(){var r=rneed();if(!r)return;var d=dg($("rmy").value);if(d.length===10)d="91"+d;if(d.length<11){$("rlog").innerHTML="Enter your own WhatsApp number.";return}window.open("https://wa.me/"+d+"?text="+encodeURIComponent(r.tx),"_blank","noopener")};
+rlg();lgs();idle();if(LP)lock();pm();
+
+/* Header, footer and editable print preview */
+function hfc(t){t=String(t||"");if(!t.trim())return "none";var out=t.split(/(\{page\}|\{pages\}|\{date\}|\{case\}|\{client\})/).filter(Boolean).map(function(p){if(p==="{page}")return "counter(page)";if(p==="{pages}")return "counter(pages)";var v=p==="{date}"?new Date().toLocaleString("en-GB"):p==="{case}"?$("cno").value:p==="{client}"?$("client").value:p;return '"'+String(v).replace(/\\/g,"\\\\").replace(/"/g,'\\"').replace(/[\r\n]+/g," ")+'"'}).join(" ");return out||"none"}
+function hfCss(){var hs=$("hshow").value==="1",fs=$("fshow").value==="1",z=(parseFloat($("hfs").value)||8)+"pt serif";
+var bx=function(pos,id,on){return "@"+pos+"{content:"+(on?hfc($(id).value):"none")+";font:"+z+"}"};
+var c="@page{"+bx("top-left","hl",hs)+bx("top-center","hc",hs)+bx("top-right","hr",hs)+bx("bottom-left","fl",fs)+bx("bottom-center","fc",fs)+bx("bottom-right","fr",fs)+"}";
+if($("hfirst").value==="0")c+="@page :first{@top-left{content:none}@top-center{content:none}@top-right{content:none}}";
+return c}
+function tk(t){return String(t||"").replace(/\{page\}/g,"1").replace(/\{pages\}/g,"n").replace(/\{date\}/g,new Date().toLocaleString("en-GB")).replace(/\{case\}/g,$("cno").value).replace(/\{client\}/g,$("client").value)}
+function pvr(){var w=pdim()[0];["pvh","pvf"].forEach(function(id,i){var e=$(id),p=i?"f":"h",on=$(p+"show").value==="1";if(!e)return;e.style.width=w+"mm";e.style.padding="2mm "+$("mr").value+"mm 2mm "+$("ml").value+"mm";
+e.innerHTML=on?"<span>"+esc(tk($(p+"l").value))+"</span><span>"+esc(tk($(p+"c").value))+"</span><span>"+esc(tk($(p+"r").value))+"</span>":"<span><i>"+(i?"Footer":"Header")+" removed</i></span><span></span><span></span>"})}
+var HF=["hshow","hfirst","hl","hc","hr","fshow","fl","fc","fr","hfs","fsize","lh","mt","mb","ml","mr"],HFD={hshow:"1",hfirst:"1",hl:"",hc:"",hr:"",fshow:"1",fl:"Diligent in Law \u2013 Advocate Thangarajus",fc:"Page {page} of {pages}",fr:"Printed: {date}",hfs:"8"},PVP=false;
+function pvsync(){HF.forEach(function(x){$("p_"+x).value=$(x).value});$("p_proof").checked=PVP}
+HF.forEach(function(x){var f=function(){$(x).value=this.value;save();style()};$("p_"+x).addEventListener("input",f);$("p_"+x).addEventListener("change",f)});
+$("p_proof").onchange=function(){PVP=this.checked};
+function hfreset(){for(var k in HFD)$(k).value=HFD[k];save();style();pvsync()}
+$("hfreset").onclick=$("pvreset").onclick=hfreset;
+function pvOpen(p){PVP=!!p||PVP;$("pvbar").append($("wbar"));$("pvbar").prepend($("prbar"));prlab();document.body.classList.remove("proof");document.body.classList.add("pv");style();pvsync();window.scrollTo(0,0)}
+function pvClose(){document.body.classList.remove("pv","proof");document.querySelector(".rt").insertBefore($("wbar"),$("scr"));document.querySelector("header").after($("prbar"));prlab();prh();save()}
+$("pvclose").onclick=pvClose;
+$("pvprint").onclick=function(){style();if(PVP)document.body.classList.add("proof");window.print()};
+$("print").onclick=function(){pvOpen(false)};
+$("proof").onclick=function(){pvOpen(true)};
+$("hfprev").onclick=function(){pvOpen(false)};
+window.onafterprint=function(){document.body.classList.remove("proof")};
+
+/* Word-style tools */
+var LR=null,SH=$("sheet"),SCR=$("scr"),WB=$("wbar"),WM=null,WT=null;
+function pdim(){var a=$("paper").value.split("x");return $("orient").value==="l"?[a[1],a[0]]:a}
+function wmsg(t){var m=$("wmsg");if(m){m.textContent=t;clearTimeout(WM);WM=setTimeout(function(){m.textContent=""},3500)}}
+function inSh(){var s=getSelection();return s.rangeCount&&SH.contains(s.anchorNode)}
+document.addEventListener("selectionchange",function(){if(inSh())LR=getSelection().getRangeAt(0).cloneRange();wst()});
+function act(fn){SH.focus();if(LR){var s=getSelection();s.removeAllRanges();s.addRange(LR)}try{document.execCommand("styleWithCSS",false,true)}catch(e){}fn();wcount()}
+function ex(c,v){act(function(){document.execCommand(c,false,v==null?null:v)})}
+function blocks(){if(!inSh())return [];var r=getSelection().getRangeAt(0),a=[].slice.call(SH.querySelectorAll("p,h1,h2,h3,h4,h5,h6,li,td,th,div")).filter(function(b){return !b.classList.contains("pb")&&r.intersectsNode(b)});return a.filter(function(b){return !a.some(function(o){return o!==b&&b.contains(o)})})}
+function bs(fn){act(function(){var b=blocks();if(!b.length){wmsg("Click inside a paragraph first.");return}b.forEach(fn)})}
+function cell(){if(!inSh())return null;var n=getSelection().anchorNode;n=n.nodeType===1?n:n.parentNode;return n.closest("td,th")}
+function wgrp(){var d=document.createElement("span");d.className="grp";WB.append(d);return d}
+function wbtn(p,t,title,fn){var b=mk("button",{textContent:t,title:title,type:"button"});b.onmousedown=function(e){e.preventDefault()};b.onclick=fn;p.append(b);return b}
+function wsel(p,id,opts,fn,title,keep){var s=mk("select",{id:id,title:title||""});opts.forEach(function(o){s.append(mk("option",{textContent:Array.isArray(o)?o[0]:o,value:Array.isArray(o)?o[1]:o}))});s.onchange=function(){var v=this.value;if(v==="")return;fn(v);if(!keep)this.selectedIndex=0};p.append(s);return s}
+function winp(p,id,type,ph,w){var i=mk("input",{id:id,type:type,placeholder:ph||"",title:ph||""});if(w)i.style.width=w;p.append(i);return i}
+function wlab(p,t){p.append(mk("span",{className:"lb",textContent:t}))}
+function fsz(pt){act(function(){if(!getSelection().rangeCount||getSelection().isCollapsed){blocks().forEach(function(b){b.style.fontSize=pt+"pt"});return}document.execCommand("styleWithCSS",false,false);document.execCommand("fontSize",false,"7");document.execCommand("styleWithCSS",false,true);SH.querySelectorAll("font[size='7']").forEach(function(f){var sp=document.createElement("span");sp.style.fontSize=pt+"pt";while(f.firstChild)sp.appendChild(f.firstChild);f.replaceWith(sp)})})}
+function fsd(d){var s=getSelection(),n=s.rangeCount&&s.anchorNode?(s.anchorNode.nodeType===1?s.anchorNode:s.anchorNode.parentNode):SH;var pt=Math.round(parseFloat(getComputedStyle(n).fontSize)*0.75);fsz(Math.max(6,Math.min(72,pt+d)))}
+function cs(v){act(function(){var t=getSelection().toString();if(!t){wmsg("Select text first.");return}var o=v==="u"?t.toUpperCase():v==="l"?t.toLowerCase():v==="t"?t.toLowerCase().replace(/(^|[\s(\-])(\S)/g,function(m,a,b){return a+b.toUpperCase()}):t.toLowerCase().replace(/(^\s*|[.!?]\s+)(\S)/g,function(m,a,b){return a+b.toUpperCase()});document.execCommand("insertText",false,o)})}
+function wpar(){act(function(){var b=blocks();if(!b.length){wmsg("Click inside a paragraph first.");return}var v=function(id,u){var x=$(id).value.trim();return x===""?null:x+u};var m=[["w_pl","mm","marginLeft"],["w_pr","mm","marginRight"],["w_pf","mm","textIndent"],["w_pb","pt","marginTop"],["w_pa","pt","marginBottom"]];b.forEach(function(p){m.forEach(function(q){var x=v(q[0],q[1]);if(x!==null)p.style[q[2]]=x})})})}
+function tins(){var r=Math.max(1,Math.min(40,+$("w_r").value||3)),c=Math.max(1,Math.min(12,+$("w_c").value||3)),h="<table>",i,j;for(i=0;i<r;i++){h+="<tr>";for(j=0;j<c;j++)h+="<td><br></td>";h+="</tr>"}h+="</table><p><br></p>";act(function(){document.execCommand("insertHTML",false,h)})}
+function tt(v){act(function(){var c=cell();if(!c){wmsg("Click inside a table cell first.");return}var tr=c.parentNode,tb=c.closest("table"),i=c.cellIndex;
+function nr(){var r=tr.cloneNode(false);[].forEach.call(tr.cells,function(){var n=document.createElement("td");n.innerHTML="<br>";r.append(n)});return r}
+if(v==="ra")tr.before(nr());else if(v==="rb")tr.after(nr());
+else if(v==="cl"||v==="cr"){[].forEach.call(tb.rows,function(r){var x=r.cells[i],n=document.createElement("td");n.innerHTML="<br>";if(x){if(v==="cl")x.before(n);else x.after(n)}else r.append(n)})}
+else if(v==="dr"){tr.remove();if(!tb.rows.length)tb.remove()}
+else if(v==="dc"){[].forEach.call(tb.rows,function(r){if(r.cells[i])r.deleteCell(i)});if(!tb.rows[0]||!tb.rows[0].cells.length)tb.remove()}
+else if(v==="dt")tb.remove();
+else if(v==="mg"){var nx=c.nextElementSibling;if(nx){c.colSpan=(c.colSpan||1)+(nx.colSpan||1);if(nx.textContent.trim())c.innerHTML+="<br>"+nx.innerHTML;nx.remove()}}
+else if(v==="bd")tb.classList.toggle("nb")})}
+function wfind(back){var f=$("w_f").value;if(!f)return;act(function(){var mc=$("w_mc").checked,hit=false,i;for(i=0;i<300;i++){if(!window.find(f,mc,!!back,true,false,false,false))break;if(inSh()){hit=true;break}}if(!hit)wmsg("Not found.")})}
+function wrep(){var f=$("w_f").value,r=$("w_g").value;if(!f)return;act(function(){var t=getSelection().toString(),mc=$("w_mc").checked;if(t&&(mc?t===f:t.toLowerCase()===f.toLowerCase()))document.execCommand("insertText",false,r)});wfind()}
+function wall(){var f=$("w_f").value,r=$("w_g").value;if(!f)return;var re=new RegExp(f.replace(/[.*+?^${}()|[\]\\]/g,"\\$&"),$("w_mc").checked?"g":"gi"),n=0,w=document.createTreeWalker(SH,NodeFilter.SHOW_TEXT),a=[],x;while((x=w.nextNode()))a.push(x);a.forEach(function(t){var v=t.nodeValue.replace(re,function(){n++;return r});if(v!==t.nodeValue)t.nodeValue=v});wmsg(n+" replaced.")}
+function wdoc(){var d=pdim(),m=[$("mt").value,$("mr").value,$("mb").value,$("ml").value],cl=SH.cloneNode(true);cl.querySelectorAll(".pb").forEach(function(p){var b=document.createElement("br");b.setAttribute("clear","all");b.style.pageBreakBefore="always";p.replaceWith(b)});
+var h='<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word"><head><meta charset="utf-8"><title>Diligent in Law</title><style>@page Section1{size:'+d[0]+'mm '+d[1]+'mm;margin:'+m[0]+'mm '+m[1]+'mm '+m[2]+'mm '+m[3]+'mm}div.Section1{page:Section1}body{font-family:"'+$("font").value+'";font-size:'+$("fsize").value+'pt;line-height:'+$("lh").value+';text-align:'+$("palign").value+'}table{border-collapse:collapse}td,th{border:1px solid #000;padding:4px}</style></head><body><div class="Section1">'+cl.innerHTML+'</div></body></html>';
+var u=URL.createObjectURL(new Blob(["﻿"+h],{type:"application/msword"})),a=document.createElement("a");a.href=u;a.download="Diligent-in-Law-"+new Date().toISOString().slice(0,10)+".doc";document.body.append(a);a.click();a.remove();setTimeout(function(){URL.revokeObjectURL(u)},4000);wmsg("Saved to your downloads. Open it in Word.")}
+function wst(){if(!inSh())return;try{WB.querySelectorAll("button[data-c]").forEach(function(b){b.classList.toggle("on",document.queryCommandState(b.dataset.c))})}catch(e){}}
+function wcount(){if(!$("wcnt"))return;var t=(SH.innerText||SH.textContent||"").trim(),n=t?t.split(/\s+/).length:0,zz=SCR.style.zoom;SCR.style.zoom="";var cs2=getComputedStyle(SH),ch=Math.max(0,SH.scrollHeight-(parseFloat(cs2.paddingTop)||0)-(parseFloat(cs2.paddingBottom)||0)),pp=(pdim()[1]-(+$("mt").value||0)-(+$("mb").value||0))*96/25.4,pg=Math.max(1,Math.ceil(ch/pp-0.02));SCR.style.zoom=zz;$("wcnt").textContent=n+" words · about "+pg+(pg===1?" page":" pages");if($("prpages"))$("prpages").textContent="Total pages: about "+pg}
+function wsync(){if(!$("w_paper"))return;$("w_paper").value=$("paper").value;$("w_orient").value=$("orient").value;$("w_cols").value=$("cols").value;wcount();prsync()}
+
+(function(){var g,AL={l:"justifyLeft",e:"justifyCenter",r:"justifyRight",j:"justifyFull"};
+g=wgrp();wbtn(g,"↶","Undo (Ctrl+Z)",function(){ex("undo")});wbtn(g,"↷","Redo (Ctrl+Y)",function(){ex("redo")});wbtn(g,"Clear","Clear formatting",function(){ex("removeFormat")});wbtn(g,"Select all","Select all (Ctrl+A)",function(){ex("selectAll")});
+g=wgrp();
+wsel(g,"w_sty",[["Style",""],["Normal","p"],["Heading 1","h1"],["Heading 2","h2"],["Heading 3","h3"],["Heading 4","h4"]],function(v){act(function(){document.execCommand("formatBlock",false,"<"+v+">")})},"Paragraph style");
+wsel(g,"w_font",[["Font",""]].concat(FONTS),function(v){ex("fontName",v)},"Font");
+wsel(g,"w_size",[["Size",""],8,9,10,11,12,13,14,16,18,20,22,24,28,36,48,72],function(v){fsz(+v)},"Font size (pt)");
+wbtn(g,"A+","Increase font size",function(){fsd(1)});wbtn(g,"A−","Decrease font size",function(){fsd(-1)});
+wsel(g,"w_case",[["Aa",""],["UPPERCASE","u"],["lowercase","l"],["Title Case","t"],["Sentence case","s"]],cs,"Change case");
+g=wgrp();
+[["B","bold","Bold (Ctrl+B)","font-weight:700"],["I","italic","Italic (Ctrl+I)","font-style:italic"],["U","underline","Underline (Ctrl+U)","text-decoration:underline"],["S","strikeThrough","Strikethrough","text-decoration:line-through"],["x₂","subscript","Subscript",""],["x²","superscript","Superscript",""]].forEach(function(a){var b=wbtn(g,a[0],a[2],function(){ex(a[1])});b.dataset.c=a[1];if(a[3])b.style.cssText=a[3]});
+wlab(g,"Text");var fc=winp(g,"w_fc","color","Text colour");fc.value="#000000";fc.oninput=function(){ex("foreColor",this.value)};
+wlab(g,"Fill");var hc=winp(g,"w_hc","color","Highlight colour");hc.value="#ffff00";hc.oninput=function(){ex("hiliteColor",this.value)};
+wbtn(g,"No fill","Remove highlight",function(){ex("hiliteColor","#ffffff")});
+g=wgrp();
+[["Left","justifyLeft","Align left (Ctrl+L)"],["Centre","justifyCenter","Centre (Ctrl+E)"],["Right","justifyRight","Align right (Ctrl+R)"],["Justify","justifyFull","Justify (Ctrl+J)"]].forEach(function(a){var b=wbtn(g,a[0],a[2],function(){ex(a[1])});b.dataset.c=a[1]});
+g=wgrp();
+var b1=wbtn(g,"• List","Bullet list",function(){ex("insertUnorderedList")});b1.dataset.c="insertUnorderedList";
+var b2=wbtn(g,"1. List","Numbered list",function(){ex("insertOrderedList")});b2.dataset.c="insertOrderedList";
+wsel(g,"w_ls",[["List style",""],["1, 2, 3","decimal"],["a, b, c","lower-alpha"],["i, ii, iii","lower-roman"],["A, B, C","upper-alpha"],["I, II, III","upper-roman"],["• bullet","disc"],["◦ circle","circle"],["▪ square","square"]],function(v){act(function(){var n=getSelection().anchorNode,l=n&&(n.nodeType===1?n:n.parentNode).closest("ol,ul");if(l)l.style.listStyleType=v;else wmsg("Click inside a list first.")})},"List style");
+wbtn(g,"Outdent","Decrease indent",function(){ex("outdent")});wbtn(g,"Indent","Increase indent",function(){ex("indent")});
+wbtn(g,"1st line","Toggle first-line indent",function(){bs(function(b){b.style.textIndent=b.style.textIndent?"":"12.7mm"})});
+wsel(g,"w_lh",[["Line spacing",""],"1","1.15","1.5","2","2.5","3"],function(v){bs(function(b){b.style.lineHeight=v})},"Line spacing");
+g=wgrp();wlab(g,"Paragraph: left mm");winp(g,"w_pl","number","Left indent (mm)");wlab(g,"right");winp(g,"w_pr","number","Right indent (mm)");wlab(g,"first line");winp(g,"w_pf","number","First-line indent (mm)");wlab(g,"before pt");winp(g,"w_pb","number","Space before (pt)");wlab(g,"after pt");winp(g,"w_pa","number","Space after (pt)");wbtn(g,"Apply","Apply paragraph settings to the selected paragraphs",wpar);
+g=wgrp();wlab(g,"Table");winp(g,"w_r","number","Rows").value=3;wlab(g,"×");winp(g,"w_c","number","Columns").value=3;wbtn(g,"Insert table","Insert table",tins);
+wsel(g,"w_tt",[["Table tools",""],["Row above","ra"],["Row below","rb"],["Column left","cl"],["Column right","cr"],["Delete row","dr"],["Delete column","dc"],["Delete table","dt"],["Merge with right cell","mg"],["Borders on/off","bd"]],tt,"Table tools");
+g=wgrp();
+wbtn(g,"Page break","Insert page break",function(){act(function(){document.execCommand("insertHTML",false,'<div class="pb" contenteditable="false"></div><p><br></p>')})});
+wbtn(g,"Line","Insert horizontal line",function(){ex("insertHorizontalRule")});
+wbtn(g,"Date","Insert today’s date",function(){act(function(){document.execCommand("insertText",false,new Date().toLocaleDateString("en-GB"))})});
+wsel(g,"w_sym",[["Symbol",""],"§","¶","₹","©","®","™","°","±","×","÷","—","–","“","”"],function(v){act(function(){document.execCommand("insertText",false,v)})},"Insert symbol");
+g=wgrp();wlab(g,"Find");winp(g,"w_f","text","Find");winp(g,"w_g","text","Replace with");
+var mc=winp(g,"w_mc","checkbox","Match case");wlab(g,"Aa");
+wbtn(g,"Next","Find next",function(){wfind(false)});wbtn(g,"Previous","Find previous",function(){wfind(true)});wbtn(g,"Replace","Replace",wrep);wbtn(g,"Replace all","Replace all",wall);
+g=wgrp();wlab(g,"Layout");
+wsel(g,"w_paper",[].map.call($("paper").options,function(o){return [o.textContent,o.value]}),function(v){$("paper").value=v;save();style()},"Paper size",true);
+wsel(g,"w_orient",[["Portrait","p"],["Landscape","l"]],function(v){$("orient").value=v;save();style()},"Orientation",true);
+wsel(g,"w_marg",[["Margins",""],["Court standard","25,25,38,25"],["Normal","25,25,25,25"],["Narrow","13,13,13,13"],["Moderate","25,25,19,19"],["Wide","25,25,50,50"]],function(v){var a=v.split(",");["mt","mb","ml","mr"].forEach(function(k,i){$(k).value=a[i]});save();style()},"Margin presets (top, bottom, left, right)");
+wsel(g,"w_cols",[["1 column","1"],["2 columns","2"],["3 columns","3"]],function(v){$("cols").value=v;save();style()},"Columns",true);
+wsel(g,"w_zoom",[["50%","50"],["75%","75"],["100%","100"],["125%","125"],["150%","150"]],function(v){SCR.style.zoom=v/100;wcount()},"Zoom",true);$("w_zoom").value="100";
+g=wgrp();
+var sp=wbtn(g,"Spelling","Turn spell check on or off",function(){SH.spellcheck=!SH.spellcheck;sp.classList.toggle("on",SH.spellcheck)});
+wbtn(g,"Page guides","Show where pages end",function(){$("guide").onclick()});
+wbtn(g,"Save as Word","Download as a Word (.doc) file",wdoc);
+wbtn(g,"Print preview","Open print preview",function(){pvOpen(false)});
+g.append(mk("span",{id:"wcnt",className:"lb"}),mk("span",{id:"wmsg",className:"lb",style:"color:var(--acc)"}));
+SH.addEventListener("keydown",function(e){var k=e.key.toLowerCase();
+if((e.ctrlKey||e.metaKey)&&!e.shiftKey&&!e.altKey&&AL[k]){e.preventDefault();document.execCommand(AL[k]);return}
+if(e.key==="Tab"){e.preventDefault();var s=getSelection(),n=s.anchorNode,el=n&&(n.nodeType===1?n:n.parentNode);
+if(el&&el.closest("li")){document.execCommand(e.shiftKey?"outdent":"indent");return}
+var c=el&&el.closest("td,th");if(c){var t=e.shiftKey?c.previousElementSibling:c.nextElementSibling;if(t){var r=document.createRange();r.selectNodeContents(t);r.collapse(true);s.removeAllRanges();s.addRange(r)}return}
+document.execCommand("insertText",false,"   ")}});
+SH.addEventListener("dblclick",function(e){if(e.target.classList&&e.target.classList.contains("pb"))e.target.remove()});
+SH.addEventListener("input",wcount);
+new MutationObserver(function(){clearTimeout(WT);WT=setTimeout(wcount,300)}).observe(SH,{childList:true,subtree:true,characterData:true});
+})();
+/* Print bar: shown at the top of the page and inside the print preview */
+var PB=$("prbar"),PGT=null;
+function pgrp(){var d=document.createElement("span");d.className="grp";PB.append(d);return d}
+function prmsg(t){var m=$("prmsg");if(m){m.textContent=t;clearTimeout(PGT);PGT=setTimeout(function(){m.textContent=""},4500)}}
+function prh(){document.documentElement.style.setProperty("--prh",(document.body.classList.contains("pv")?0:PB.offsetHeight)+"px")}
+function prlab(){var b=$("pr_prev");if(b)b.textContent=document.body.classList.contains("pv")?"Close preview":"Print preview"}
+function prsum(){var o=$("paper").selectedOptions[0],al={left:"left-aligned",justify:"justified",center:"centred",right:"right-aligned"}[$("palign").value];return (o?o.textContent:"")+" "+($("orient").value==="l"?"landscape":"portrait")+" · margins T"+$("mt").value+" B"+$("mb").value+" L"+$("ml").value+" R"+$("mr").value+" mm · "+$("font").value+" "+$("fsize").value+" pt, line spacing "+$("lh").value+" · "+al+" · "+(($("cols").value>1)?$("cols").value+" columns · ":"")+"header "+($("hshow").value==="1"?"on":"removed")+", footer "+($("fshow").value==="1"?"on":"removed")}
+function prsync(){if(!$("pr_paper"))return;$("pr_paper").value=$("paper").value;$("pr_orient").value=$("orient").value;$("pr_hshow").value=$("hshow").value;$("pr_fshow").value=$("fshow").value;var c=$("fc").value;$("pr_pn").value=(c==="Page {page} of {pages}"||c==="Page {page}")?c:(c===""?"none":"");$("pr_proof").checked=PVP;$("prsum").textContent=prsum();prh()}
+function doPrint(selOnly){style();var ps=$("psel");ps.innerHTML="";document.body.classList.remove("psel");
+if(selOnly){var r=(inSh()&&!getSelection().isCollapsed)?getSelection().getRangeAt(0):((LR&&!LR.collapsed)?LR:null);if(!r){prmsg("Select the text you want to print first.");return}
+ps.appendChild(r.cloneContents());["fontFamily","fontSize","lineHeight","textAlign","columnCount","columnGap","direction"].forEach(function(k){ps.style[k]=SH.style[k]});document.body.classList.add("psel")}
+if(PVP)document.body.classList.add("proof");window.print()}
+(function(){var g=pgrp();
+wbtn(g,"Print","Print the whole document",function(){doPrint(false)}).className="p";
+wbtn(g,"Print selection","Print only the text you have selected",function(){doPrint(true)});
+wbtn(g,"Print preview","Open print preview",function(){if(document.body.classList.contains("pv"))pvClose();else pvOpen(false)}).id="pr_prev";
+wbtn(g,"Save as PDF","Open the print window and choose Save as PDF there",function(){prmsg("In the print window, choose Save as PDF as the printer.");doPrint(false)});
+var pr=winp(g,"pr_proof","checkbox","Draft watermark");wlab(g,"Draft watermark");pr.onchange=function(){PVP=this.checked;if($("p_proof"))$("p_proof").checked=PVP};
+g=pgrp();
+wsel(g,"pr_paper",[].map.call($("w_paper").options,function(o){return [o.textContent,o.value]}),function(v){$("paper").value=v;save();style()},"Paper size",true);
+wsel(g,"pr_orient",[["Portrait","p"],["Landscape","l"]],function(v){$("orient").value=v;save();style()},"Orientation",true);
+wsel(g,"pr_marg",[].map.call($("w_marg").options,function(o){return [o.textContent,o.value]}),function(v){var a=v.split(",");["mt","mb","ml","mr"].forEach(function(k,i){$(k).value=a[i]});save();style()},"Margin presets",false);
+wsel(g,"pr_hshow",[["Header: show","1"],["Header: removed","0"]],function(v){$("hshow").value=v;save();style()},"Header",true);
+wsel(g,"pr_fshow",[["Footer: show","1"],["Footer: removed","0"]],function(v){$("fshow").value=v;save();style()},"Footer",true);
+wsel(g,"pr_pn",[["Custom page number",""],["Page X of Y","Page {page} of {pages}"],["Page X","Page {page}"],["No page number","none"]],function(v){$("fc").value=v==="none"?"":v;if(v!=="none")$("fshow").value="1";save();style()},"Page numbers",true);
+g=pgrp();g.append(mk("span",{id:"prpages",className:"tot",textContent:"Total pages: 1"}),mk("span",{id:"prsum",className:"lb"}),mk("span",{id:"prmsg",className:"lb",style:"color:var(--acc)"}));
+PB.append(mk("div",{className:"lb",textContent:"For a page range or number of copies, use the Pages and Copies boxes in the print window. To print part of the text, select it and press Print selection."}));
+})();
+$("pvprint").onclick=function(){doPrint(false)};
+$("p_proof").onchange=function(){PVP=this.checked;prsync()};
+window.addEventListener("resize",prh);
+window.addEventListener("afterprint",function(){document.body.classList.remove("psel");$("psel").innerHTML=""});
+prsync();wcount();
+window.addEventListener("beforeprint",function(){SCR.style.zoom=""});
+window.addEventListener("afterprint",function(){SCR.style.zoom=($("w_zoom").value/100)||""});
+style();
+</script></body></html>

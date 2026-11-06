@@ -1,0 +1,19 @@
+{
+  "name": "Diligent in Law – Advocate Thangarajus",
+  "short_name": "Diligent In Law",
+  "description": "Offline-first Indian legal drafting, court pleading & fee receipts workstation",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#0B0F17",
+  "theme_color": "#0B0F17",
+  "orientation": "any",
+  "icons": [
+    {
+      "src": "icons/icon.svg",
+      "sizes": "192x192 512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
+
