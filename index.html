@@ -14,14 +14,25 @@
 </head>
 <body>
   <header>
-    <div id="clk" aria-label="Clock"></div>
-    <h1>Diligent in Law – Advocate Thangarajus</h1>
-    <p>Drafting, filing set-up and printing for court pleadings, written arguments, vakalat and legal opinions</p>
+    <div class="header-top">
+      <div class="brand-wrap">
+        <div class="brand-shield">⚖️</div>
+        <div class="brand-text">
+          <h1>
+            Diligent in Law
+            <span class="badge-version">v2.0</span>
+            <span class="badge-offline">Offline Chamber</span>
+          </h1>
+          <p>Advocate Thangarajus • High Court & District Legal Workstation</p>
+        </div>
+      </div>
+      <div id="clk" aria-label="Clock"></div>
+    </div>
     <div class="header-actions">
-      <button id="btn_hub_bns">⚖️ BNS / BNSS Codes</button>
-      <button id="btn_hub_calc">📅 NI 138 & Court Fees</button>
+      <button id="btn_hub_bns">⚖️ 2024 Criminal Codes</button>
+      <button id="btn_hub_calc">📅 Statutory Calculators</button>
       <button id="btn_hub_diary">📋 Case Diary & Cause List</button>
-      <button id="btn_hub_index">📑 e-Filing Index</button>
+      <button id="btn_hub_index">📑 e-Filing Indexer</button>
       <button id="btn_hub_ledger">💼 Chamber Fee Ledger</button>
     </div>
   </header>
@@ -64,7 +75,7 @@
   <main>
     <div class="ui">
       <section>
-        <h2>1. Court and filing</h2>
+        <h2><span class="badge-tag">01</span> Court and Filing Details</h2>
         <label>State of filing (choose first)</label><select id="state"><option value="">Select State</option></select>
         <div id="strules" class="note" style="margin:6px 0"></div>
         <label>Place (city / town)</label><input id="place" placeholder="Chennai">
@@ -79,7 +90,7 @@
       </section>
 
       <section>
-        <h2>2. Jurisdiction, valuation, court fee</h2>
+        <h2><span class="badge-tag">02</span> Jurisdiction, Valuation & Court Fee</h2>
         <div class="row">
           <div><label>Suit / claim value (Rs.)</label><input id="val"></div>
           <div><label>Court fee / stamp duty paid (Rs.)</label><input id="fee"></div>
@@ -93,22 +104,22 @@
       </section>
 
       <section>
-        <h2>3. Facts and circumstances</h2>
+        <h2><span class="badge-tag">03</span> Facts, Grounds & Prayer</h2>
         <label>Brief of the facts (one paragraph per line)</label><textarea id="facts" style="min-height:160px"></textarea>
         <label>Grounds / arguments (one per line)</label><textarea id="grounds" style="min-height:100px"></textarea>
         <label>Prayer (one per line)</label><textarea id="prayer" style="min-height:70px"></textarea>
       </section>
 
       <section>
-        <h2>4. Documents in order of priority</h2>
+        <h2><span class="badge-tag">04</span> Documents & Annexures</h2>
         <div id="docs"></div><button id="adddoc">Add document</button>
         <p class="note">Put the strongest proof first. Use the arrows to reorder. Annexure numbers follow this order.</p>
       </section>
 
       <section>
-        <h2>5. Case laws table</h2>
+        <h2><span class="badge-tag">05</span> Case Laws & Statutory Sections</h2>
         <div id="laws"></div><button id="addlaw">Add case law</button>
-        <h2 style="margin-top:14px">Sections and Acts relied on</h2><div id="secs"></div><button id="addsec">Add section</button>
+        <h2 style="margin-top:14px"><span class="badge-tag">5A</span> Sections and Acts Relied On</h2><div id="secs"></div><button id="addsec">Add section</button>
         <label>Find case laws and sections (opens Indian Kanoon in a new tab)</label>
         <div class="row"><input id="q" placeholder="e.g. gift deed Section 23 senior citizens"><button id="sq">Search</button></div>
         <label>Paste a list from Claude. Case laws: Case | Court, date | Holding | Para. Sections: Act | Section | Relevance. One per line.</label>
@@ -120,7 +131,7 @@
       </section>
 
       <section>
-        <h2>6. Advocates and docket</h2>
+        <h2><span class="badge-tag">06</span> Advocates & Docket Setup</h2>
         <div id="advs"></div><button id="addadv">Add advocate</button>
         <label><input type="checkbox" id="caveat" checked style="width:auto"> Reserve right to file caveat petition (Section 148-A CPC)</label>
         <label><input type="checkbox" id="sign" style="width:auto"> Add place, date and advocate name at the end of the draft</label>
@@ -128,7 +139,7 @@
       </section>
 
       <section>
-        <h2>7. Language, font and page</h2>
+        <h2><span class="badge-tag">07</span> Language, Typography & Paper Format</h2>
         <div class="row">
           <div><label>Language</label><select id="lang"></select></div>
           <div><label>Font</label><select id="font"></select></div>
@@ -185,7 +196,7 @@
       </section>
 
       <section>
-        <h2>7A. Header and footer</h2>
+        <h2><span class="badge-tag">7A</span> Header & Footer Rules</h2>
         <div class="row">
           <div><label>Header</label><select id="hshow"><option value="1">Show</option><option value="0">Remove</option></select></div>
           <div><label>Header on first page</label><select id="hfirst"><option value="1">Yes</option><option value="0">No</option></select></div>
@@ -208,7 +219,7 @@
       </section>
 
       <section>
-        <h2>8. Review, proof print and legal aids</h2>
+        <h2><span class="badge-tag">08</span> Review, Proof Print & Legal Aids</h2>
         <div class="row">
           <button id="chkb">Check before filing</button>
           <button id="guide">Page guides</button>
@@ -241,7 +252,7 @@
       </section>
 
       <section>
-        <h2>9. Agreements and deeds</h2>
+        <h2><span class="badge-tag">09</span> Agreements & Commercial Deeds</h2>
         <label>Agreement or deed</label><select id="atype"></select>
         <label>Property class</label><select id="aprop"></select>
         <label>Property location and Sub-Registrar office (where the property is situated)</label>
@@ -306,7 +317,7 @@
       </section>
 
       <section>
-        <h2>10. Storage, Security & Multi-Device Sync</h2>
+        <h2><span class="badge-tag">10</span> Security, Encrypted Backup & Office LAN Sync</h2>
         <label>Passcode lock</label>
         <input id="spw" type="password" placeholder="Passcode (6 or more characters)">
         <div class="row">
@@ -316,7 +327,7 @@
         </div>
         <label>Auto-lock after (minutes, 0 = off)</label><input id="sidle" type="number" value="10" min="0">
         
-        <h2 style="margin-top:14px">IndexedDB Drafts & Encrypted Backup</h2>
+        <h2 style="margin-top:14px"><span class="badge-tag">10A</span> IndexedDB Encrypted Storage</h2>
         <div class="row">
           <button id="db_save" class="p">Save Draft to Database</button>
           <button id="db_load">Load Saved Draft</button>
@@ -327,7 +338,7 @@
           <input type="file" id="inp_import_diligent" accept=".diligent,.json" style="display:none">
         </div>
 
-        <h2 style="margin-top:14px">Multi-Device Office LAN Sync</h2>
+        <h2 style="margin-top:14px"><span class="badge-tag">10B</span> Multi-Device Office LAN Sync</h2>
         <div class="row">
           <input id="sync_url" placeholder="http://192.168.1.5:8080" value="http://localhost:8080">
           <button id="btn_lan_sync">Sync with Office Server</button>
@@ -340,7 +351,7 @@
       </section>
 
       <section>
-        <h2>11. Receipts</h2>
+        <h2><span class="badge-tag">11</span> Fee Receipts & Dynamic UPI QR</h2>
         <label>Received from (name)</label><input id="rn" autocomplete="off">
         <div class="row">
           <div><label>Mobile number</label><input id="rm" inputmode="tel" placeholder="9876543210" autocomplete="off"></div>
@@ -394,12 +405,17 @@
       </section>
 
       <section>
-        <button class="p" id="gen">Generate draft</button>
-        <button id="print">Print</button>
-        <button id="vak">Vakalat</button>
-        <button id="agr">Agreement</button>
-        <button id="adv">Legal opinion</button>
-        <button id="theme">Light / dark</button>
+        <h2><span class="badge-tag">12</span> Document Generation Actions</h2>
+        <div class="row" style="margin-bottom:8px">
+          <button class="p" id="gen">Generate Draft</button>
+          <button id="print">Print Document</button>
+        </div>
+        <div class="row" style="margin-bottom:8px">
+          <button id="vak">Vakalatnama</button>
+          <button id="agr">Agreement</button>
+          <button id="adv">Legal Opinion</button>
+        </div>
+        <button id="theme" style="width:100%">Toggle Dark / Light Theme</button>
         <p class="note">Edit the draft directly on the page at the right. Generating again replaces your edits. Data stays in this browser only.</p>
       </section>
     </div>
