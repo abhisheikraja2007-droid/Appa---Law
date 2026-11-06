@@ -59,10 +59,10 @@ class OfficeSyncHandler(SimpleHTTPRequestHandler):
             self.send_response(404)
             self.end_headers()
 
-def run(port=PORT):
-    server_address = ("", port)
+def run(host="0.0.0.0", port=PORT):
+    server_address = (host, port)
     httpd = HTTPServer(server_address, OfficeSyncHandler)
-    print(f"Diligent in Law Office Workstation running on http://localhost:{port}")
+    print(f"Diligent in Law Office Workstation running on http://{host}:{port} (LAN & Localhost)")
     try:
         httpd.serve_forever()
     except KeyboardInterrupt:
@@ -71,4 +71,4 @@ def run(port=PORT):
 
 if __name__ == "__main__":
     p = int(sys.argv[1]) if len(sys.argv) > 1 else PORT
-    run(p)
+    run(port=p)
